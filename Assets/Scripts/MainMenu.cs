@@ -9,6 +9,15 @@ public class MainMenu : MonoBehaviour
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void OptionMenu()
+    {
+
+        PlayerPrefs.SetString("optionSceneCaller", SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("OptionMenu");
+
+    }
+
     public void QuitGame()
     {
         Debug.Log("QUIT");
