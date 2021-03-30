@@ -4,50 +4,42 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
-    private Animator anim;
-    private bool grounded;
-    private bool running;
-    private bool blocking;
+    
     private Rigidbody rb;
-    private float jump;
-    private float speed;
     private Vector3 movement;
     public AudioSource walk;
     public AudioSource jumpaudio;
     public AudioSource armouraudio;
-    public int health = 100;
-    public int armour = 50;
-    public int gold = 0;
+    private bool combo = false;
+    private float lastclick = 0;
+
 
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        anim = gameObject.GetComponent<Animator>();
-        grounded = true;
-        jump = 5;
-        speed = 5;
     }
    
-    void FixedUpdate() {
+    private void checkBlock() {
         if (Input.GetMouseButton(1)){
-            anim.SetBool("block", true);
-            blocking = true;
+            playerVariables.blocking = true;
         }
-        else {
-            anim.SetBool("block", false);
-            blocking = false;
+        else{
+            playerVariables.blocking = false;
         }
-        float mH = Input.GetAxis("Horizontal");
-        float mV = Input.GetAxis("Vertical");
-        movement.Set(mH, 0f, mV);
-        movement = movement.normalized * speed * Time.deltaTime;
+    }
+
+    private void PlayerMovemnt() {
+        playerVariables.mH = Input.GetAxis("Horizontal");
+        playerVariables.mV = Input.GetAxis("Vertical");
+        movement.Set(playerVariables.mH, 0f, playerVariables.mV);
+        movement = movement.normalized * playerVariables.speed * Time.deltaTime;
         movement = transform.position + (transform.forward * movement.z) + (transform.right * movement.x);
-        
-        if (mV > 0 && !blocking) {
+
+        if (playerVariables.mV > 0 && !playerVariables.blocking) {
             rb.MovePosition(movement);
             if (!walk.isPlaying) walk.Play();
         }
-        else if (mV < 0 && !blocking) {
+        else if (playerVariables.mV < 0 && !playerVariables.blocking) {
             rb.MovePosition(movement);
             if (!walk.isPlaying) walk.Play();
         }
@@ -55,30 +47,80 @@ public class playerController : MonoBehaviour
             if (walk.isPlaying) walk.Stop();
         }
 
-        if (mH > 0) transform.Rotate(Vector3.up, 90 * Time.deltaTime);
-        else if (mH < 0) transform.Rotate(Vector3.up, -90 * Time.deltaTime);
-        
-        if (mH != 0 || mV != 0)
-        {
-            if (!armouraudio.isPlaying && !blocking) armouraudio.Play();
+        if (playerVariables.mH != 0 || playerVariables.mV != 0) {
+            if (!armouraudio.isPlaying && !playerVariables.blocking) armouraudio.Play();
         }
         else armouraudio.Pause();
-        anim.SetFloat("vertical", mV);
-        anim.SetFloat("horizontal", mH);
-        if (Input.GetKeyDown("space") && !blocking) { 
-            if (grounded) { 
-                anim.SetTrigger("jump");
+    }
+
+    private void RotatePlayer() {
+        if (playerVariables.mH > 0) transform.Rotate(Vector3.up, 90 * Time.deltaTime);
+        else if (playerVariables.mH < 0) transform.Rotate(Vector3.up, -90 * Time.deltaTime);
+    }
+
+    private void Jump() {
+        if (Input.GetKeyDown("space") && !playerVariables.blocking)
+        {
+            if (playerVariables.grounded)
+            {
+                gameObject.GetComponent<Animator>().SetTrigger("jump");
                 jumpaudio.Play();
-                rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
-                grounded = false;
+                rb.AddForce(Vector3.up * playerVariables.jump, ForceMode.Impulse);
+                playerVariables.grounded = false;
             }
         }
-        if (jumpaudio.isPlaying) walk.Stop(); 
+        if (jumpaudio.isPlaying) walk.Stop();
+    }
+
+    private void Attack()
+    {
+       
+       if (Time.time - lastclick > 2f)
+        {
+            playerVariables.clicks = 0;
+
+        }
+        if (Input.GetMouseButtonDown(0)) {
+            lastclick = Time.time;
+            playerVariables.clicks++;
+            if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                gameObject.GetComponent<Animator>().SetTrigger("light1");
+            }
+            else if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Light1"))
+            {
+                gameObject.GetComponent<Animator>().SetTrigger("light2");
+            }
+            else if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Light2"))
+            {
+                gameObject.GetComponent<Animator>().SetTrigger("light3");
+                playerVariables.clicks = 0;
+            }
+            else if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Light3"))
+            {
+                gameObject.GetComponent<Animator>().ResetTrigger("light1");
+                gameObject.GetComponent<Animator>().ResetTrigger("light2");
+                gameObject.GetComponent<Animator>().ResetTrigger("light3");
+            }
+
+        }
+    }
+
+    void FixedUpdate() {
+        checkBlock();
+        PlayerMovemnt();
+        RotatePlayer();
+        Jump();
+        Attack();
+        
+        
+
+        
     }
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.rigidbody.tag.Equals("Ground")) {
-            grounded = true;
+            playerVariables.grounded = true;
         }
         
     }
@@ -89,28 +131,28 @@ public class playerController : MonoBehaviour
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
-            health = health + 50;
+            playerVariables.health = playerVariables.health + 50;
         }
         if (col.tag == "Coin")
         {
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
-            gold = gold + 1;
+            playerVariables.gold = playerVariables.gold + 1;
         }
         if (col.tag == "Ingot")
         {
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
-            gold = gold + 5;
+            playerVariables.gold = playerVariables.gold + 5;
         }
         if (col.tag == "Shield")
         {
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
-            armour = armour + 25;
+            playerVariables.armour = playerVariables.armour + 25;
         }
     }
     
