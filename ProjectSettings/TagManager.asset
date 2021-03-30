@@ -6,6 +6,9 @@ TagManager:
   tags:
   - HealthPotion
   - Ground
+  - Coin
+  - Ingot
+  - Shield
   layers:
   - Default
   - TransparentFX
