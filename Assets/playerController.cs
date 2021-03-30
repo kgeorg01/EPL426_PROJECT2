@@ -7,6 +7,7 @@ public class playerController : MonoBehaviour
     private Animator anim;
     private bool grounded;
     private bool running;
+    private bool blocking;
     private Rigidbody rb;
     private float jump;
     private float speed;
@@ -27,19 +28,26 @@ public class playerController : MonoBehaviour
         speed = 5;
     }
    
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
+        if (Input.GetMouseButton(1)){
+            anim.SetBool("block", true);
+            blocking = true;
+        }
+        else {
+            anim.SetBool("block", false);
+            blocking = false;
+        }
         float mH = Input.GetAxis("Horizontal");
         float mV = Input.GetAxis("Vertical");
         movement.Set(mH, 0f, mV);
         movement = movement.normalized * speed * Time.deltaTime;
         movement = transform.position + (transform.forward * movement.z) + (transform.right * movement.x);
         
-        if (mV > 0) {
+        if (mV > 0 && !blocking) {
             rb.MovePosition(movement);
             if (!walk.isPlaying) walk.Play();
         }
-        else if (mV < 0) {
+        else if (mV < 0 && !blocking) {
             rb.MovePosition(movement);
             if (!walk.isPlaying) walk.Play();
         }
@@ -52,12 +60,12 @@ public class playerController : MonoBehaviour
         
         if (mH != 0 || mV != 0)
         {
-            if (!armouraudio.isPlaying) armouraudio.Play();
+            if (!armouraudio.isPlaying && !blocking) armouraudio.Play();
         }
         else armouraudio.Pause();
         anim.SetFloat("vertical", mV);
         anim.SetFloat("horizontal", mH);
-        if (Input.GetKeyDown("space")) { 
+        if (Input.GetKeyDown("space") && !blocking) { 
             if (grounded) { 
                 anim.SetTrigger("jump");
                 jumpaudio.Play();
