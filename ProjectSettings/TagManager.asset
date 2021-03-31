@@ -9,6 +9,8 @@ TagManager:
   - Coin
   - Ingot
   - Shield
+  - SwordAttack
+  - ShieldAttack
   layers:
   - Default
   - TransparentFX

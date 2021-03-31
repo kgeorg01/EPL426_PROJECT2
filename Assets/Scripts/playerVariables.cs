@@ -6,6 +6,7 @@ public class playerVariables : MonoBehaviour
 {
     public static bool grounded;
     public static bool blocking;
+    public static bool attacking;
     public static float mH;
     public static float mV;
     public static int health;
@@ -13,13 +14,15 @@ public class playerVariables : MonoBehaviour
     public static int gold;
     public static float speed;
     public static float jump;
-    public static int clicks;
+    public static int clickslight;
+    public static int clicksheavy;
 
 
     private void Start()
     {
         grounded = false;
         blocking = false;
+        attacking = false;
         mH = 0;
         mV = 0;
         health = 150;
@@ -27,6 +30,7 @@ public class playerVariables : MonoBehaviour
         gold = 0;
         speed = 5f;
         jump = 5f;
-        clicks = 0;
-}
+        clickslight = 0;
+        clicksheavy = 0;
+    }
 }

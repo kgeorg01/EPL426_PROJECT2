@@ -10,7 +10,6 @@ public class playerController : MonoBehaviour
     public AudioSource walk;
     public AudioSource jumpaudio;
     public AudioSource armouraudio;
-    private bool combo = false;
     private float lastclick = 0;
 
 
@@ -18,7 +17,7 @@ public class playerController : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
     }
-   
+    
     private void checkBlock() {
         if (Input.GetMouseButton(1)){
             playerVariables.blocking = true;
@@ -35,11 +34,11 @@ public class playerController : MonoBehaviour
         movement = movement.normalized * playerVariables.speed * Time.deltaTime;
         movement = transform.position + (transform.forward * movement.z) + (transform.right * movement.x);
 
-        if (playerVariables.mV > 0 && !playerVariables.blocking) {
+        if (playerVariables.mV > 0 && !playerVariables.blocking && !playerVariables.attacking) {
             rb.MovePosition(movement);
             if (!walk.isPlaying) walk.Play();
         }
-        else if (playerVariables.mV < 0 && !playerVariables.blocking) {
+        else if (playerVariables.mV < 0 && !playerVariables.blocking && !playerVariables.attacking) {
             rb.MovePosition(movement);
             if (!walk.isPlaying) walk.Play();
         }
@@ -48,7 +47,7 @@ public class playerController : MonoBehaviour
         }
 
         if (playerVariables.mH != 0 || playerVariables.mV != 0) {
-            if (!armouraudio.isPlaying && !playerVariables.blocking) armouraudio.Play();
+            if (!armouraudio.isPlaying && !playerVariables.blocking && !playerVariables.attacking) armouraudio.Play();
         }
         else armouraudio.Pause();
     }
@@ -75,14 +74,40 @@ public class playerController : MonoBehaviour
     private void Attack()
     {
        
-       if (Time.time - lastclick > 2f)
-        {
-            playerVariables.clicks = 0;
+       if (Time.time - lastclick > 2f) {
+            playerVariables.clickslight = 0;
+            playerVariables.clicksheavy = 0;
 
         }
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift))
+        {
             lastclick = Time.time;
-            playerVariables.clicks++;
+            playerVariables.clickslight = 0;
+            playerVariables.clicksheavy++;
+            if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                gameObject.GetComponent<Animator>().SetTrigger("heavy1");
+            }
+            else if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Heavy1"))
+            {
+                gameObject.GetComponent<Animator>().SetTrigger("heavy2");
+            }
+            else if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Heavy2"))
+            {
+                gameObject.GetComponent<Animator>().SetTrigger("heavy3");
+                playerVariables.clicksheavy = 0;
+            }
+            else if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Heavy3"))
+            {
+                gameObject.GetComponent<Animator>().ResetTrigger("heavy1");
+                gameObject.GetComponent<Animator>().ResetTrigger("heavy2");
+                gameObject.GetComponent<Animator>().ResetTrigger("heavy3");
+            }
+        }
+        else if (Input.GetMouseButtonDown(0)) {
+            lastclick = Time.time;
+            playerVariables.clicksheavy = 0;
+            playerVariables.clickslight++;
             if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 gameObject.GetComponent<Animator>().SetTrigger("light1");
@@ -94,7 +119,7 @@ public class playerController : MonoBehaviour
             else if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Light2"))
             {
                 gameObject.GetComponent<Animator>().SetTrigger("light3");
-                playerVariables.clicks = 0;
+                playerVariables.clickslight = 0;
             }
             else if (gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Light3"))
             {
@@ -102,7 +127,6 @@ public class playerController : MonoBehaviour
                 gameObject.GetComponent<Animator>().ResetTrigger("light2");
                 gameObject.GetComponent<Animator>().ResetTrigger("light3");
             }
-
         }
     }
 
