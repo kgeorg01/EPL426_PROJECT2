@@ -11,6 +11,7 @@ TagManager:
   - Shield
   - SwordAttack
   - ShieldAttack
+  - Enemy
   layers:
   - Default
   - TransparentFX

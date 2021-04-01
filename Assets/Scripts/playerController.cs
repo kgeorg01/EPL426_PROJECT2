@@ -143,7 +143,7 @@ public class playerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.rigidbody.tag.Equals("Ground")) {
+        if (collision.gameObject.tag.Equals("Ground")) {
             playerVariables.grounded = true;
         }
         
