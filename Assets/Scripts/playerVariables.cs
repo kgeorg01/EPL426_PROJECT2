@@ -27,6 +27,7 @@ public class playerVariables : MonoBehaviour
     // Variables for attack
     public static int clickslight;
     public static int clicksheavy;
+    public AudioSource pain;
 
     public  HUDHealthBar healthBar;
     public  HUDShieldBar shieldbar;
@@ -65,6 +66,7 @@ public class playerVariables : MonoBehaviour
 
     public  void TakeDamage(int damage)
     {
+        if (!pain.isPlaying) pain.Play();
         if (armour > damage)
         {
             armour -= damage;

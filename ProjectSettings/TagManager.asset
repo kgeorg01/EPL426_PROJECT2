@@ -14,6 +14,7 @@ TagManager:
   - Enemy
   - Crate
   - Poison
+  - Fire
   layers:
   - Default
   - TransparentFX

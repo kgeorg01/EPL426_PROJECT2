@@ -10,7 +10,9 @@ public class playerController : MonoBehaviour
     public AudioSource walk;
     public AudioSource jumpaudio;
     public AudioSource armouraudio;
+    public Canvas Poisonscreen;
     private float lastclick = 0;
+    private int counter = 0;
 
     public playerVariables playervar;
 
@@ -173,8 +175,6 @@ public class playerController : MonoBehaviour
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
-            // playerVariables.potions++; 
-            //if (playerVariables.potions > playerVariables.maxPotions) playerVariables.potions = playerVariables.maxPotions;
             playervar.AddPotion(1);
         }
         if (col.tag == "Coin")
@@ -182,7 +182,6 @@ public class playerController : MonoBehaviour
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
-            //playerVariables.gold = playerVariables.gold + 1;
             playervar.AddGold(1);
         }
         if (col.tag == "Ingot")
@@ -190,7 +189,6 @@ public class playerController : MonoBehaviour
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
-            //playerVariables.gold = playerVariables.gold + 5;
             playervar.AddGold(5);
         }
         if (col.tag == "Shield")
@@ -199,10 +197,33 @@ public class playerController : MonoBehaviour
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
             playervar.AddArmour(25);
-           // playerVariables.armour = playerVariables.armour + 25;
-           //if (playerVariables.armour > playerVariables.maxArmour) playerVariables.armour = playerVariables.maxArmour;
+        }
+        
+    }
+
+    private void OnTriggerStay(Collider col) {
+        if (col.tag == "Poison") {
+            Poisonscreen.enabled = true;
+            counter++;
+            if (counter == 15) {
+                counter = 0;
+                playervar.TakeDamage(1);
+            }
+        }
+        else
+        {
+            Poisonscreen.enabled = false;
+        }
+        if (col.tag == "Fire")
+        {
+            counter++;
+            if (counter == 15)
+            {
+                counter = 0;
+                playervar.TakeDamage(2);
+            }
         }
     }
-    
+
 
 }
