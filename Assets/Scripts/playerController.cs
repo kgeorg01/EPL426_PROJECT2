@@ -155,7 +155,8 @@ public class playerController : MonoBehaviour
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
-            playerVariables.health = playerVariables.health + 50;
+            playerVariables.potions++; 
+            if (playerVariables.potions > playerVariables.maxPotions) playerVariables.potions = playerVariables.maxPotions;
         }
         if (col.tag == "Coin")
         {
@@ -177,6 +178,7 @@ public class playerController : MonoBehaviour
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
             playerVariables.armour = playerVariables.armour + 25;
+            if (playerVariables.armour > playerVariables.maxArmour) playerVariables.armour = playerVariables.maxArmour;
         }
     }
     

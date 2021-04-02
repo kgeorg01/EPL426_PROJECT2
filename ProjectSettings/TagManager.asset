@@ -12,6 +12,8 @@ TagManager:
   - SwordAttack
   - ShieldAttack
   - Enemy
+  - Crate
+  - Poison
   layers:
   - Default
   - TransparentFX
