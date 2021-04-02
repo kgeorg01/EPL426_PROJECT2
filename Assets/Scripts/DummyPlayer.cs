@@ -14,6 +14,7 @@ public class DummyPlayer : MonoBehaviour
 	public HUDHealthBar healthBar;
 	public HUDShieldBar shieldbar;
 	public HUDGold goldInd;
+	public HUDPotion potionInd;
 
 	// Start is called before the first frame update
 	void Start()

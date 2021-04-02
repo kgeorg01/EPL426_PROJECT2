@@ -12,6 +12,7 @@ public class playerController : MonoBehaviour
     public AudioSource armouraudio;
     private float lastclick = 0;
 
+    public playerVariables playervar;
 
     private void Start()
     {
@@ -130,17 +131,34 @@ public class playerController : MonoBehaviour
         }
     }
 
+    private void consumeHealthPotion()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            playervar.DrinkPotion();
+        }
+    }
+
+
     void FixedUpdate() {
         checkBlock();
         PlayerMovemnt();
         RotatePlayer();
         Jump();
         Attack();
-        
-        
+        consumeHealthPotion();
 
-        
+        //FOR TESTING HEALTH
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            playervar.TakeDamage(20);
+            
+        }
+
+
+
     }
+
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag.Equals("Ground")) {
@@ -155,30 +173,34 @@ public class playerController : MonoBehaviour
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
-            playerVariables.potions++; 
-            if (playerVariables.potions > playerVariables.maxPotions) playerVariables.potions = playerVariables.maxPotions;
+            // playerVariables.potions++; 
+            //if (playerVariables.potions > playerVariables.maxPotions) playerVariables.potions = playerVariables.maxPotions;
+            playervar.AddPotion(1);
         }
         if (col.tag == "Coin")
         {
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
-            playerVariables.gold = playerVariables.gold + 1;
+            //playerVariables.gold = playerVariables.gold + 1;
+            playervar.AddGold(1);
         }
         if (col.tag == "Ingot")
         {
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
-            playerVariables.gold = playerVariables.gold + 5;
+            //playerVariables.gold = playerVariables.gold + 5;
+            playervar.AddGold(5);
         }
         if (col.tag == "Shield")
         {
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);
-            playerVariables.armour = playerVariables.armour + 25;
-            if (playerVariables.armour > playerVariables.maxArmour) playerVariables.armour = playerVariables.maxArmour;
+            playervar.AddArmour(25);
+           // playerVariables.armour = playerVariables.armour + 25;
+           //if (playerVariables.armour > playerVariables.maxArmour) playerVariables.armour = playerVariables.maxArmour;
         }
     }
     
