@@ -171,7 +171,7 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if(col.tag == "HealthPotion") {
+        if(col.tag == "HealthPotion" && playervar.maxPotions>playervar.potions) {
             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
             Destroy(col.gameObject);

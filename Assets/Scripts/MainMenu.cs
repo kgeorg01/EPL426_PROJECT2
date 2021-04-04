@@ -5,16 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-   public void PlayGame () {
+
+    public GameObject mainMenuUI;
+    public GameObject optionMenuUI;
+    public void PlayGame () {
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void OptionMenu()
     {
-
-        PlayerPrefs.SetString("optionSceneCaller", SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene("OptionMenu");
+        mainMenuUI.SetActive(false);
+        optionMenuUI.SetActive(true);
+        //PlayerPrefs.SetString("optionSceneCaller", SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene("OptionMenu");
 
     }
 

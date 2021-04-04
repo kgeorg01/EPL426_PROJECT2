@@ -11,11 +11,17 @@ public class OptionsMenu : MonoBehaviour
 
     public AudioMixer audioMixer;
     public TMP_Dropdown resolutionDropdown;
+    public GameObject callerUI;
+    public GameObject optionMenuUI;
 
     Resolution[] res;
 
     void Start()
     {
+
+       // callerUI.SetActive(false);
+       //optionMenuUI.SetActive(false);
+
         res = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
@@ -63,8 +69,11 @@ public class OptionsMenu : MonoBehaviour
 
     public void Back ()
     {
-        string sceneName = PlayerPrefs.GetString("optionSceneCaller");
-        SceneManager.LoadScene(sceneName);
+        optionMenuUI.SetActive(false);
+        callerUI.SetActive(true);
+        
+        //string sceneName = PlayerPrefs.GetString("optionSceneCaller");
+        //SceneManager.LoadScene(sceneName);
     }
 
 }

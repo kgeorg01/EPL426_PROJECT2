@@ -16,14 +16,15 @@ public class playerVariables : MonoBehaviour
     public static float jump;
 
     // Variables for stats
-    public static int maxHealth;
-    public static int maxPotions;
-    public static int maxArmour;
-    public static int health;
-    public static int armour;
-    public static int gold;
-    public static int potions;
-    
+    public int maxHealth;
+    public  int maxPotions;
+    public  int maxArmour;
+    public  int health;
+    public  int armour;
+    public  int gold;
+    public  int potions;
+    public  float attackDamage;
+
     // Variables for attack
     public static int clickslight;
     public static int clicksheavy;
@@ -49,9 +50,10 @@ public class playerVariables : MonoBehaviour
         //Starting values
         maxHealth = 100;
         maxArmour = 50;
-        maxPotions = 9;
+        maxPotions = 3;
         gold = 0;
         potions = 0;
+        attackDamage = 10;
 
         health = maxHealth;
         armour = maxArmour;
@@ -62,6 +64,18 @@ public class playerVariables : MonoBehaviour
         goldInd.SetGold(gold);
         potionInd.SetPotion(potions);
 
+    }
+
+    public void SetDamage (int dmg)
+    {
+        attackDamage = dmg;
+    }
+
+    // for 20% increase the input is 0.2
+    public void IncreasePercDamage (float percentage )
+    {
+        float increasePercDamage = attackDamage* percentage;
+        attackDamage += increasePercDamage;
     }
 
     public  void TakeDamage(int damage)
@@ -121,11 +135,16 @@ public class playerVariables : MonoBehaviour
         shieldbar.SetShield(armour);
     }
 
-    public  void AddPotion(int pot)
+    public  bool AddPotion(int pot)
     {
-        potions += pot;
-        if (potions > maxPotions) potions = maxPotions;
-        potionInd.SetPotion(potions);
+        if (potions >= maxPotions) return false;
+        else
+        {
+            potions += pot;
+            potionInd.SetPotion(potions);
+            return true;
+        }
+       
     }
 
     public  void RemovePotion(int pot)
@@ -142,5 +161,28 @@ public class playerVariables : MonoBehaviour
             AddHealth(25);
         }
 
+    }
+
+    public void AddMaxHealth (int health)
+    {
+        maxHealth += health;
+        AddHealth(health);
+    }
+
+    public void AddMaxArmour(int armor)
+    {
+        maxArmour += armor;
+        AddArmour(armor);
+    }
+
+    public void AddMaxPotion(int pot)
+    {
+        maxPotions += pot;
+       
+    }
+
+    public int  GetGold ()
+    {
+        return gold;
     }
 }
