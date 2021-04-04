@@ -8,6 +8,8 @@ public class playerVariables : MonoBehaviour
     public static bool grounded;
     public static bool blocking;
     public static bool attacking;
+    public static bool dead;
+    public static bool falling;
 
     // Variables about movement
     public static float mH;
@@ -40,6 +42,7 @@ public class playerVariables : MonoBehaviour
         grounded = false;
         blocking = false;
         attacking = false;
+        dead = false;
         mH = 0;
         mV = 0;
         speed = 5f;
@@ -80,7 +83,7 @@ public class playerVariables : MonoBehaviour
 
     public  void TakeDamage(int damage)
     {
-        if (!pain.isPlaying) pain.Play();
+        if (!pain.isPlaying && !dead) pain.Play();
         if (armour > damage)
         {
             armour -= damage;
@@ -104,6 +107,10 @@ public class playerVariables : MonoBehaviour
             health -= damage;
             if (health < 0) health = 0;
             healthBar.SetHealth(health);
+        }
+
+        if (health == 0) {
+            dead = true;
         }
     }
 

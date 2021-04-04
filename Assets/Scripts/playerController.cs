@@ -10,7 +10,6 @@ public class playerController : MonoBehaviour
     public AudioSource walk;
     public AudioSource jumpaudio;
     public AudioSource armouraudio;
-    public Canvas Poisonscreen;
     private float lastclick = 0;
     private int counter = 0;
 
@@ -143,22 +142,20 @@ public class playerController : MonoBehaviour
 
 
     void FixedUpdate() {
-        checkBlock();
-        PlayerMovemnt();
-        RotatePlayer();
-        Jump();
-        Attack();
-        consumeHealthPotion();
-
-        //FOR TESTING HEALTH
-        if (Input.GetKeyDown(KeyCode.J))
+        if (!playerVariables.dead)
         {
-            playervar.TakeDamage(20);
-            
+            checkBlock();
+            PlayerMovemnt();
+            RotatePlayer();
+            Jump();
+            Attack();
+            consumeHealthPotion();
+            if (transform.position.y < -8)
+            {
+                playerVariables.dead = true;
+                playerVariables.falling = true;
+            }
         }
-
-
-
     }
 
 
@@ -203,16 +200,11 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerStay(Collider col) {
         if (col.tag == "Poison") {
-            Poisonscreen.enabled = true;
             counter++;
             if (counter == 15) {
                 counter = 0;
                 playervar.TakeDamage(1);
             }
-        }
-        else
-        {
-            Poisonscreen.enabled = false;
         }
         if (col.tag == "Fire")
         {
