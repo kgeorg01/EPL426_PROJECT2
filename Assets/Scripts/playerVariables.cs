@@ -8,6 +8,8 @@ public class playerVariables : MonoBehaviour
     public static bool grounded;
     public static bool blocking;
     public static bool attacking;
+    public static bool attackingheavy;
+    public static bool attackinglight;
     public static bool dead;
     public static bool falling;
 

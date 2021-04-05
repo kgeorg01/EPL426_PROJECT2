@@ -22,14 +22,24 @@ public class ControlAnimator : MonoBehaviour
     private void checkAttack()
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Heavy1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Heavy2") ||
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Heavy3") || anim.GetCurrentAnimatorStateInfo(0).IsName("Light1") ||
-            anim.GetCurrentAnimatorStateInfo(0).IsName("Light2") || anim.GetCurrentAnimatorStateInfo(0).IsName("Light3"))
+            anim.GetCurrentAnimatorStateInfo(0).IsName("Heavy3"))
         {
             playerVariables.attacking = true;
+            playerVariables.attackingheavy = true;
+            playerVariables.attackinglight = false;
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Light1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Light2") 
+            || anim.GetCurrentAnimatorStateInfo(0).IsName("Light3"))
+        {
+            playerVariables.attacking = true;
+            playerVariables.attackingheavy = false;
+            playerVariables.attackinglight = true;
         }
         else
         {
             playerVariables.attacking = false;
+            playerVariables.attackingheavy = false;
+            playerVariables.attackinglight = false;
         }
     }
     // Update is called once per frame
