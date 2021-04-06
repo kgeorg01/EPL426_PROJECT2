@@ -15,6 +15,7 @@ TagManager:
   - Crate
   - Poison
   - Fire
+  - Spike
   layers:
   - Default
   - TransparentFX

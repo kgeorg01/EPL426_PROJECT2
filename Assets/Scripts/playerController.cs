@@ -12,6 +12,7 @@ public class playerController : MonoBehaviour
     public AudioSource armouraudio;
     private float lastclick = 0;
     private int counter = 0;
+    private bool spikeEntered;
 
     public playerVariables playervar;
 
@@ -204,7 +205,15 @@ public class playerController : MonoBehaviour
             Destroy(col.gameObject);
             playervar.AddArmour(25);
         }
-        
+        if (col.tag == "Spike")
+        {
+            if (!spikeEntered)
+            {
+                spikeEntered = true;
+                playervar.TakeDamage(50);
+
+            }
+        }
     }
 
     private void OnTriggerStay(Collider col) {
@@ -226,5 +235,11 @@ public class playerController : MonoBehaviour
         }
     }
 
-
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag.Equals("Spike"))
+        {
+            spikeEntered = false;
+        }
+    }
 }
