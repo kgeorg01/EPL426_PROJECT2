@@ -156,6 +156,15 @@ public class playerController : MonoBehaviour
                 playerVariables.falling = true;
             }
         }
+
+
+        //Test
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            playervar.TakeDamage(20);
+        }
+
+
     }
 
 

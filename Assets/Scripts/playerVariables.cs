@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerVariables : MonoBehaviour
 {
@@ -194,4 +195,53 @@ public class playerVariables : MonoBehaviour
     {
         return gold;
     }
+
+    public void SavePlayer(int slot)
+    {
+        Debug.Log("Saving ...");
+        SaveSystem.SavePlayer(this , slot);
+
+    }
+
+    public void LoadPlayer (int slot, bool loadScene = false )
+    {
+
+        Debug.Log("Loading ...");
+
+        PlayerData pd = SaveSystem.LoadPlayer(slot);
+
+        maxHealth = pd.maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+
+        health = pd.health;
+        healthBar.SetHealth(health);
+
+        maxArmour = pd.maxArmour;
+        shieldbar.SetMaxShield(maxArmour);
+
+        armour = pd.armour;
+        shieldbar.SetShield(armour);
+
+        gold = pd.gold;
+        goldInd.SetGold(gold);
+
+        maxPotions = pd.maxPotions;
+
+        potions = pd.potions;
+        potionInd.SetPotion(potions);
+
+        attackDamage = pd.attackDamage;
+
+        Vector3 position;
+        position.x = pd.position[0];
+        position.y = pd.position[1];
+        position.z = pd.position[2];
+        transform.position = position;
+
+
+        if (loadScene) SceneManager.LoadScene(pd.scenceIdx);
+
+
+    }
+
 }
