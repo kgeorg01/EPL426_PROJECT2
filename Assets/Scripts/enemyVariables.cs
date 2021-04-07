@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class enemyVariables : MonoBehaviour
 {
-    public int health;
+    public int health = 100;
     public static bool attacking = false;
     public HUDHealthBar healthBar;
     // Start is called before the first frame update
     void Start()
     {
-        health = 100;
+        
     }
 
     // Update is called once per frame
