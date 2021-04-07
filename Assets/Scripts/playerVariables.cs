@@ -201,6 +201,7 @@ public class playerVariables : MonoBehaviour
         Debug.Log("Saving ...");
         SaveSystem.SavePlayer(this , slot);
 
+
     }
 
     public void LoadPlayer (int slot, bool loadScene = false )
@@ -209,7 +210,7 @@ public class playerVariables : MonoBehaviour
         Debug.Log("Loading ...");
 
         PlayerData pd = SaveSystem.LoadPlayer(slot);
-
+        Debug.Log("Loading ...2");
         maxHealth = pd.maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
@@ -239,7 +240,7 @@ public class playerVariables : MonoBehaviour
         transform.position = position;
 
 
-        if (loadScene) SceneManager.LoadScene(pd.scenceIdx);
+       // if (loadScene) SceneManager.LoadScene(pd.scenceIdx);
 
 
     }

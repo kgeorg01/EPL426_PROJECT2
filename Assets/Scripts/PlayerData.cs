@@ -18,7 +18,7 @@ public class PlayerData
     public float attackDamage;
 
     public float[] position;
-    public int scenceIdx;
+    public string scenceIdx;
 
     public PlayerData ( playerVariables player) {
         // Variables for stats
@@ -35,7 +35,7 @@ public class PlayerData
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
         position[2] = player.transform.position.z;
-        scenceIdx = SceneManager.GetActiveScene().buildIndex;
+        scenceIdx = SceneManager.GetActiveScene().name;
 
     }
 
