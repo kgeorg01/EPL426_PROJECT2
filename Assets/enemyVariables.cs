@@ -5,6 +5,7 @@ using UnityEngine;
 public class enemyVariables : MonoBehaviour
 {
     public int health;
+    public static bool attacking = false;
     public HUDHealthBar healthBar;
     // Start is called before the first frame update
     void Start()

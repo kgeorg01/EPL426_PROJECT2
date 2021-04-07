@@ -12,7 +12,8 @@ public class playerController : MonoBehaviour
     public AudioSource armouraudio;
     private float lastclick = 0;
     private int counter = 0;
-    private bool spikeEntered;
+    private bool spikeEntered = false;
+    private bool enemyEntered = false;
 
     public playerVariables playervar;
 
@@ -56,8 +57,8 @@ public class playerController : MonoBehaviour
     }
 
     private void RotatePlayer() {
-        if (playerVariables.mH > 0) transform.Rotate(Vector3.up, 90 * Time.deltaTime);
-        else if (playerVariables.mH < 0) transform.Rotate(Vector3.up, -90 * Time.deltaTime);
+        if (playerVariables.mH > 0) transform.Rotate(Vector3.up, 180 * Time.deltaTime);
+        else if (playerVariables.mH < 0) transform.Rotate(Vector3.up, -180 * Time.deltaTime);
     }
 
     private void Jump() {
@@ -214,6 +215,15 @@ public class playerController : MonoBehaviour
 
             }
         }
+        if (col.tag == "EnemyAttack")
+        {
+            if (!spikeEntered)
+            {
+                enemyEntered = true;
+                playervar.TakeDamage(1);
+
+            }
+        }
     }
 
     private void OnTriggerStay(Collider col) {
@@ -239,7 +249,11 @@ public class playerController : MonoBehaviour
     {
         if (other.tag.Equals("Spike"))
         {
-            spikeEntered = false;
+            enemyEntered = false;
+        }
+        if (other.tag.Equals("EnemyAttack"))
+        {
+            enemyEntered = false;
         }
     }
 }

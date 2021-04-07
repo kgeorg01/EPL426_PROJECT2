@@ -87,32 +87,45 @@ public class playerVariables : MonoBehaviour
     public  void TakeDamage(int damage)
     {
         if (!pain.isPlaying && !dead) pain.Play();
-        if (armour > damage)
+        if (blocking)
         {
-            armour -= damage;
-            shieldbar.SetShield(armour);
+            if (armour > damage)
+            {
+                armour -= damage;
+                shieldbar.SetShield(armour);
 
-        } else if (armour >0)
+            }
+            else if (armour > 0)
+            {
+                //damage>armor
+                damage -= armour;
+                armour = 0; //damage >=armor so armor becomes 0
+                shieldbar.SetShield(armour);
+
+                //rest of the damage affects health
+                health -= damage;
+                if (health < 0) health = 0;
+                healthBar.SetHealth(health);
+
+            }
+            else
+            {
+                //no shield left
+                health -= damage;
+                if (health < 0) health = 0;
+                healthBar.SetHealth(health);
+            }
+
+        }
+        else
         {
-            //damage>armor
-            damage -= armour;
-            armour = 0; //damage >=armor so armor becomes 0
-            shieldbar.SetShield(armour);
-
-            //rest of the damage affects health
-            health -= damage;
-            if (health < 0) health = 0;
-            healthBar.SetHealth(health);
-
-        } else
-        {
-            //no shield left
             health -= damage;
             if (health < 0) health = 0;
             healthBar.SetHealth(health);
         }
 
-        if (health == 0) {
+        if (health == 0)
+        {
             dead = true;
         }
     }
