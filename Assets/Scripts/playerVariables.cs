@@ -40,6 +40,9 @@ public class playerVariables : MonoBehaviour
     public  HUDGold goldInd;
     public  HUDPotion potionInd;
 
+    //SaveSystem
+    private static string SaveSystemInstruction = "0";
+
     private void Start()
     {
         grounded = false;
@@ -70,6 +73,14 @@ public class playerVariables : MonoBehaviour
         goldInd.SetGold(gold);
         potionInd.SetPotion(potions);
 
+
+        //SaveSystem operations
+        if (SaveSystemInstruction == "load1") LoadData(1);
+        else if (SaveSystemInstruction == "load2") LoadData(2);
+        else if (SaveSystemInstruction == "load3") LoadData(3);
+        else if(SaveSystemInstruction == "load0") LoadData(0); //doesnt load a scence and used the secret save 0. (save on 0 when finishing a level and load 0 when starting a new level)
+
+        SaveSystemInstruction = "0";
     }
 
     public void SetDamage (int dmg)
@@ -208,8 +219,22 @@ public class playerVariables : MonoBehaviour
     {
 
         Debug.Log("Loading ...");
-
         PlayerData pd = SaveSystem.LoadPlayer(slot);
+        SaveSystemInstruction = "load" + slot;
+
+        Time.timeScale = 1f;
+        if (slot !=0) SceneManager.LoadScene(pd.scenceIdx);
+
+
+       // if (loadScene) SceneManager.LoadScene(pd.scenceIdx);
+
+
+    }
+
+    public void LoadData (int slot)
+    {
+        //THE GAME OBJECTS MUST HAVE A COMPONENT WITH THE SCRIPT "UniqueID" (potions , shield, gold etc)
+        PlayerData pd = SaveSystem.LoadPlayer(slot , true);
         Debug.Log("Loading ...2");
         maxHealth = pd.maxHealth;
         healthBar.SetMaxHealth(maxHealth);
@@ -238,10 +263,6 @@ public class playerVariables : MonoBehaviour
         position.y = pd.position[1];
         position.z = pd.position[2];
         transform.position = position;
-
-
-       // if (loadScene) SceneManager.LoadScene(pd.scenceIdx);
-
 
     }
 

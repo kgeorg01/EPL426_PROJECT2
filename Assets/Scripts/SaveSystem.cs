@@ -22,7 +22,7 @@ public static class SaveSystem
         formatter.Serialize(stream, pd);
         stream.Close();
 
-       // SaveCollectibles(slot);
+       SaveCollectibles(slot);
 
     }
 
@@ -36,32 +36,33 @@ public static class SaveSystem
 
         int size = collectP.Length + collectI.Length + collectC.Length + collectS.Length;
 
-        int[] collectID = new int[size];
+        string [] collectID = new string[size];
 
         Debug.Log("SaveList");
-       
+
+        //THE GAME OBJECTS MUST HAVE A COMPONENT WITH THE SCRIPT "UniqueID"
 
         int i = 0;
         foreach (GameObject collect in collectP){
-            collectID[i] = collect.GetInstanceID();
+            collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
             Debug.Log(collectID[i]);
             i++;
         }
         foreach (GameObject collect in collectI)
         {
-            collectID[i] = collect.GetInstanceID();
+            collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
             Debug.Log(collectID[i]);
             i++;
         }
         foreach (GameObject collect in collectC)
         {
-            collectID[i] = collect.GetInstanceID();
+            collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
             Debug.Log(collectID[i]);
             i++;
         }
         foreach (GameObject collect in collectS)
         {
-            collectID[i] = collect.GetInstanceID();
+            collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
             Debug.Log(collectID[i]);
             i++;
         }
@@ -79,7 +80,7 @@ public static class SaveSystem
 
     }
 
-    public static PlayerData LoadPlayer(int slot)
+    public static PlayerData LoadPlayer(int slot , bool allData = false)
     {
 
         string saveName = "player" + slot + ".save";
@@ -94,9 +95,10 @@ public static class SaveSystem
 
             stream.Close();
 
-           // Time.timeScale = 1f;
-           // SceneManager.LoadScene(pd.scenceIdx , LoadSceneMode.Single);
-           // LoadCollectibles(slot);
+         //  Time.timeScale = 1f;
+           //SceneManager.LoadScene(pd.scenceIdx , LoadSceneMode.Single);
+
+           if (allData) LoadCollectibles(slot);
 
 
             return pd;
@@ -123,8 +125,8 @@ public static class SaveSystem
             FileStream stream = new FileStream(path, FileMode.Open);
 
 
-            int []  collectID = formatter.Deserialize(stream) as int[];
-            List<int> loadCollect= new List<int>(collectID);
+            string []  collectID = formatter.Deserialize(stream) as string[];
+            List<string> loadCollect= new List<string>(collectID);
            
             GameObject[] collectP = GameObject.FindGameObjectsWithTag("HealthPotion");
             GameObject[] collectI = GameObject.FindGameObjectsWithTag("Ingot");
@@ -139,10 +141,10 @@ public static class SaveSystem
 
             Debug.Log("LoadList");
             
-
+            //THE GAME OBJECTS MUST HAVE A COMPONENT WITH THE SCRIPT "UniqueID"
             foreach ( GameObject coll in allCollect)
             {
-                int id = coll.GetInstanceID();
+                string id = coll.GetComponent<UniqueID>().uniqueId;
                 Debug.Log(id);
                 if (loadCollect.Contains(id))
                 {
