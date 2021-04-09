@@ -18,6 +18,7 @@ TagManager:
   - Spike
   - hpbar
   - EnemyAttack
+  - Platform
   layers:
   - Default
   - TransparentFX

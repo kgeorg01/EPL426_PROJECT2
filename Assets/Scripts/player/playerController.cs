@@ -224,6 +224,11 @@ public class playerController : MonoBehaviour
 
             }
         }
+        if (col.tag == "Platform")
+        {
+            transform.parent = col.transform;
+
+        }
     }
 
     private void OnTriggerStay(Collider col) {
@@ -254,6 +259,11 @@ public class playerController : MonoBehaviour
         if (other.tag.Equals("EnemyAttack"))
         {
             enemyEntered = false;
+        }
+        if (other.tag == "Platform")
+        {
+            transform.parent = null;
+
         }
     }
 }
