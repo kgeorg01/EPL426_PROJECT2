@@ -12,6 +12,7 @@ public class enemyController : MonoBehaviour
     public Collider attackRange;
     public int enemyType = 0;
     public GameObject healthbar;
+    public GameObject arrow;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,10 @@ public class enemyController : MonoBehaviour
         if (enemyType == 1)
         {
             BanditControl();
+        }
+        else if (enemyType == 2)
+        {
+            ArcherControl();
         }
         
     }
@@ -82,5 +87,38 @@ public class enemyController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position,lookRadius);
+    }
+
+    void archeratt()
+    {
+        GameObject instarrow = Instantiate(arrow, transform.position + Vector3.up + (target.position - transform.position).normalized, transform.rotation);
+        Rigidbody arrowRB = instarrow.GetComponent<Rigidbody>();
+        arrowRB.AddForce((target.position - transform.position).normalized * 15, ForceMode.Impulse);
+    }
+    void ArcherControl()
+    {
+        if (enemyVariables.dead)
+        {
+            anim.Play("Dead");
+            gameObject.GetComponent<MeshCollider>().enabled = false;
+            Destroy(healthbar);
+        }
+        else
+        {
+            float distance = Vector3.Distance(target.position, transform.position);
+            if (distance <= lookRadius)
+            {
+                enemyVariables.attacking = true;
+                faceTarget();
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("attack")){
+                    anim.Play("attack");
+                    Invoke("archeratt", 5);
+                }
+            }
+            else
+            {
+                enemyVariables.attacking = false;
+            }
+        }
     }
 }

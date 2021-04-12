@@ -19,6 +19,7 @@ TagManager:
   - hpbar
   - EnemyAttack
   - Platform
+  - Arrow
   layers:
   - Default
   - TransparentFX

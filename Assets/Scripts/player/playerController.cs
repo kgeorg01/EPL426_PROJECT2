@@ -174,7 +174,11 @@ public class playerController : MonoBehaviour
         if (collision.gameObject.tag.Equals("Ground")) {
             playerVariables.grounded = true;
         }
-        
+        if (collision.gameObject.tag.Equals("Arrow"))
+        {
+            playervar.TakeDamage(10);
+        }
+
     }
 
     private void OnTriggerEnter(Collider col)

@@ -1,12 +1,14 @@
 fileFormatVersion: 2
-guid: 49e492b2bd476774a9981f8a5d591398
+guid: 7dadb109c2d40a947b9281c8a354aad2
 ModelImporter:
   serializedVersion: 20101
-  internalIDToNameTable:
+  internalIDToNameTable: []
+  externalObjects:
   - first:
-      74: -203655887218126122
-    second: mixamo.com
-  externalObjects: {}
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: b0b0b0
+    second: {fileID: 2100000, guid: 66d45a42f9a3b464fa9a449525728b20, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -89,7 +91,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: Hips
+    rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
@@ -97,7 +99,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
