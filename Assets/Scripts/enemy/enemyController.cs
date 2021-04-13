@@ -8,7 +8,7 @@ public class enemyController : MonoBehaviour
     public float lookRadius = 10f;
     Transform target;
     public NavMeshAgent agent;
-    private Animator anim;
+    public Animator anim;
     public Collider attackRange;
     public int enemyType = 0;
     public GameObject healthbar;
@@ -17,7 +17,6 @@ public class enemyController : MonoBehaviour
     void Start()
     {
         target = PlayerManager.instance.player.transform;
-        anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame

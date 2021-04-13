@@ -9,17 +9,7 @@ public class enemyVariables : MonoBehaviour
     public static bool dead = false;
     public HUDHealthBar healthBar;
     // Start is called before the first frame update
-    void Start()
-    {
-        health = 100;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     void death()
     {
         Destroy(gameObject);

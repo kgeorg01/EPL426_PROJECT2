@@ -160,13 +160,6 @@ public class playerController : MonoBehaviour
         }
 
 
-        //Test
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            playervar.TakeDamage(20);
-        }
-
-
     }
 
 
