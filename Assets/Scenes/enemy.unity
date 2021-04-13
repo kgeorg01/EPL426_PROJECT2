@@ -235,6 +235,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &668615962 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1930803264698380888, guid: 22180d45b60d2ec41920075c2997594e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1294139576}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3309810e1d218974a95e172039a95233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &798507933
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +547,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1136853184 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1848868067, guid: ec89c1953c4f88542a0c88ec05007d9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6978436738010927060}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3309810e1d218974a95e172039a95233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1231372719 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5326938385002215922, guid: 22180d45b60d2ec41920075c2997594e,
@@ -563,6 +587,11 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 1660853173}
+    - target: {fileID: 1930803264698380893, guid: 22180d45b60d2ec41920075c2997594e,
+        type: 3}
+      propertyPath: enemyVar
+      value: 
+      objectReference: {fileID: 668615962}
     - target: {fileID: 8555278307094410836, guid: 22180d45b60d2ec41920075c2997594e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -650,35 +679,39 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9005508, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08077938
+      value: 0.08078632
       objectReference: {fileID: 0}
     - target: {fileID: 9005508, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.048294354
+      value: -0.046495136
       objectReference: {fileID: 0}
     - target: {fileID: 9005508, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.003918612
+      value: 0.0037726215
       objectReference: {fileID: 0}
     - target: {fileID: 9005508, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9955536
+      value: 0.99563926
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08077937
+      value: 0.080786325
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.04829435
+      value: -0.04649513
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0039186114
+      value: 0.0037726227
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99563926
       objectReference: {fileID: 0}
     - target: {fileID: 550645587, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -809,6 +842,10 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 928901881}
+    - target: {fileID: 1848868068, guid: ec89c1953c4f88542a0c88ec05007d9d, type: 3}
+      propertyPath: enemyVar
+      value: 
+      objectReference: {fileID: 1136853184}
     - target: {fileID: 2244599350221246891, guid: ec89c1953c4f88542a0c88ec05007d9d,
         type: 3}
       propertyPath: camra

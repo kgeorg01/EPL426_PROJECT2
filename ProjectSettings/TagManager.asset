@@ -20,6 +20,7 @@ TagManager:
   - EnemyAttack
   - Platform
   - Arrow
+  - Water
   layers:
   - Default
   - TransparentFX

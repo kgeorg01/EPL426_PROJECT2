@@ -5,8 +5,8 @@ using UnityEngine;
 public class enemyVariables : MonoBehaviour
 {
     public int health;
-    public static bool attacking = false;
-    public static bool dead = false;
+    public bool attacking = false;
+    public bool dead = false;
     public HUDHealthBar healthBar;
     // Start is called before the first frame update
     

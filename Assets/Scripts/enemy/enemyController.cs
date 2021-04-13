@@ -13,6 +13,8 @@ public class enemyController : MonoBehaviour
     public int enemyType = 0;
     public GameObject healthbar;
     public GameObject arrow;
+    public enemyVariables enemyVar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,7 @@ public class enemyController : MonoBehaviour
 
     void BanditControl()
     {
-        if (enemyVariables.dead)
+        if (enemyVar.dead)
         {
             attackRange.enabled = false;
             anim.Play("Dead");
@@ -53,11 +55,11 @@ public class enemyController : MonoBehaviour
             if (distance <= lookRadius)
             {
                 agent.SetDestination(target.position);
-                if (anim.GetCurrentAnimatorStateInfo(0).IsName("idle") && !enemyVariables.attacking) anim.Play("walk");
-                enemyVariables.attacking = false;
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("idle") && !enemyVar.attacking) anim.Play("walk");
+                enemyVar.attacking = false;
                 if (distance <= agent.stoppingDistance)
                 {
-                    enemyVariables.attacking = true;
+                    enemyVar.attacking = true;
                     faceTarget();
                     if (!anim.GetCurrentAnimatorStateInfo(0).IsName("attack1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack2")
                         && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack3"))
@@ -70,7 +72,7 @@ public class enemyController : MonoBehaviour
             }
             else
             {
-                enemyVariables.attacking = false;
+                enemyVar.attacking = false;
                 attackRange.enabled = false;
             }
         }
@@ -96,7 +98,7 @@ public class enemyController : MonoBehaviour
     }
     void ArcherControl()
     {
-        if (enemyVariables.dead)
+        if (enemyVar.dead)
         {
             anim.Play("Dead");
             gameObject.GetComponent<MeshCollider>().enabled = false;
@@ -107,7 +109,7 @@ public class enemyController : MonoBehaviour
             float distance = Vector3.Distance(target.position, transform.position);
             if (distance <= lookRadius)
             {
-                enemyVariables.attacking = true;
+                enemyVar.attacking = true;
                 faceTarget();
                 if (!anim.GetCurrentAnimatorStateInfo(0).IsName("attack")){
                     anim.Play("attack");
@@ -116,7 +118,7 @@ public class enemyController : MonoBehaviour
             }
             else
             {
-                enemyVariables.attacking = false;
+                enemyVar.attacking = false;
             }
         }
     }

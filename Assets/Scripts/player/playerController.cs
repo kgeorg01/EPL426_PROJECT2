@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ public class playerController : MonoBehaviour
     private int counter = 0;
     private bool spikeEntered = false;
     private bool enemyEntered = false;
-
+    private long waterTime=0;
     public playerVariables playervar;
 
     private void Start()
@@ -171,6 +172,7 @@ public class playerController : MonoBehaviour
         {
             playervar.TakeDamage(10);
         }
+      
 
     }
 
@@ -226,6 +228,7 @@ public class playerController : MonoBehaviour
             transform.parent = col.transform;
 
         }
+     
     }
 
     private void OnTriggerStay(Collider col) {
@@ -245,6 +248,20 @@ public class playerController : MonoBehaviour
                 playervar.TakeDamage(2);
             }
         }
+
+        if (col.gameObject.tag.Equals("Water") && Input.GetKey(KeyCode.W) )
+        {
+            long milliseconds = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+
+            if (milliseconds > waterTime + 400 ) { 
+
+             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
+             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
+             
+             waterTime = milliseconds;
+            }
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -262,5 +279,10 @@ public class playerController : MonoBehaviour
             transform.parent = null;
 
         }
+
+
     }
+
+  
+
 }
