@@ -69,8 +69,9 @@ public static class SaveSystem
         GameObject[] collectI = GameObject.FindGameObjectsWithTag("Ingot");
         GameObject[] collectC = GameObject.FindGameObjectsWithTag("Coin");
         GameObject[] collectS = GameObject.FindGameObjectsWithTag("Shield");
+        GameObject[] collectB = GameObject.FindGameObjectsWithTag("Crate");
 
-        int size = collectP.Length + collectI.Length + collectC.Length + collectS.Length;
+        int size = collectP.Length + collectI.Length + collectC.Length + collectS.Length + collectB.Length;
 
         string[] collectID = new string[size];
 
@@ -104,7 +105,12 @@ public static class SaveSystem
             i++;
         }
 
+        foreach (GameObject collect in collectB)
+        {
+            collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
 
+            i++;
+        }
 
 
         string saveName = "collectibles" + slot + ".save";
@@ -140,12 +146,14 @@ public static class SaveSystem
             GameObject[] collectI = GameObject.FindGameObjectsWithTag("Ingot");
             GameObject[] collectC = GameObject.FindGameObjectsWithTag("Coin");
             GameObject[] collectS = GameObject.FindGameObjectsWithTag("Shield");
+            GameObject[] collectB = GameObject.FindGameObjectsWithTag("Crate");
 
             List<GameObject> allCollect = new List<GameObject>();
             allCollect.AddRange(collectP);
             allCollect.AddRange(collectI);
             allCollect.AddRange(collectC);
             allCollect.AddRange(collectS);
+            allCollect.AddRange(collectB);
 
             Debug.Log("LoadList");
 

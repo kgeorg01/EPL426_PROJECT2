@@ -231,6 +231,12 @@ public class playerController : MonoBehaviour
         {
             playervar.TakeDamage(999);
         }
+        if (col.tag == "fireStatue")
+        {
+            col.GetComponent<firestream>().enabled = true;
+            col.transform.GetChild(1).gameObject.SetActive(true);
+            Debug.Log("enter");
+        }
 
     }
 
@@ -283,7 +289,12 @@ public class playerController : MonoBehaviour
 
         }
 
-
+        if (other.tag == "fireStatue")
+        {
+            other.GetComponent<firestream>().enabled = false;
+            other.transform.GetChild(1).gameObject.SetActive(false);
+            Debug.Log("LEAVE");
+        }
     }
 
   

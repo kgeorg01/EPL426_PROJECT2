@@ -14,21 +14,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: e9666cb54f0dea14aa443ce046e215db, type: 3}
---- !u!114 &244023454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7693409553603889900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fb2acb4989a4a84cbaf5a95dccbdc37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fire: {fileID: 7495280406006009506}
-  col: {fileID: 1574248213824895160}
-  firesound: {fileID: 6569243791506508974}
 --- !u!82 &6569243791506508974
 AudioSource:
   m_ObjectHideFlags: 0
@@ -38,7 +23,8 @@ AudioSource:
   m_GameObject: {fileID: 7693409553603889900}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 958a520b1fbe8b84983c17bcc47916f4,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 9c66aa59f1b0db7418ffdb026e0f01ec, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.25
@@ -125,6 +111,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &244023454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693409553603889900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fb2acb4989a4a84cbaf5a95dccbdc37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fire: {fileID: 7495280406006009506}
+  col: {fileID: 1574248213824895160}
+  firesound: {fileID: 6569243791506508974}
 --- !u!65 &1574248213824895160
 BoxCollider:
   m_ObjectHideFlags: 0

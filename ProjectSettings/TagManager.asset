@@ -22,6 +22,7 @@ TagManager:
   - Arrow
   - Water
   - Lava
+  - fireStatue
   layers:
   - Default
   - TransparentFX
