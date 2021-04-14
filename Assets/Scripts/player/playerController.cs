@@ -226,9 +226,12 @@ public class playerController : MonoBehaviour
         if (col.tag == "Platform")
         {
             transform.parent = col.transform;
-
         }
-     
+        if (col.tag == "Lava")
+        {
+            playervar.TakeDamage(999);
+        }
+
     }
 
     private void OnTriggerStay(Collider col) {

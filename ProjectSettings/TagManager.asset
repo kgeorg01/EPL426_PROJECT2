@@ -21,6 +21,7 @@ TagManager:
   - Platform
   - Arrow
   - Water
+  - Lava
   layers:
   - Default
   - TransparentFX

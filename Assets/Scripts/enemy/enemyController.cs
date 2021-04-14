@@ -94,7 +94,7 @@ public class enemyController : MonoBehaviour
     {
         GameObject instarrow = Instantiate(arrow, transform.position + Vector3.up + (target.position - transform.position).normalized, transform.rotation);
         Rigidbody arrowRB = instarrow.GetComponent<Rigidbody>();
-        arrowRB.AddForce((target.position - transform.position).normalized * 15, ForceMode.Impulse);
+        arrowRB.AddForce((target.position - transform.position).normalized * 25, ForceMode.Impulse);
     }
     void ArcherControl()
     {
