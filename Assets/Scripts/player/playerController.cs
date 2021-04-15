@@ -11,6 +11,8 @@ public class playerController : MonoBehaviour
     public AudioSource walk;
     public AudioSource jumpaudio;
     public AudioSource armouraudio;
+    public AudioSource waterWalk;
+    public AudioSource waterJump;
     private float lastclick = 0;
     private int counter = 0;
     private bool spikeEntered = false;
@@ -258,16 +260,34 @@ public class playerController : MonoBehaviour
             }
         }
 
-        if (col.gameObject.tag.Equals("Water") && Input.GetKey(KeyCode.W) )
+        if ( (col.gameObject.tag.Equals("Water") || col.gameObject.tag.Equals("Poison")) && Input.GetKey(KeyCode.W) )
         {
             long milliseconds = DateTimeOffset.Now.ToUnixTimeMilliseconds();
 
-            if (milliseconds > waterTime + 400 ) { 
+            if (milliseconds > waterTime + 400 ) {
 
-             AudioSource audio = col.gameObject.GetComponent<AudioSource>();
-             AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
+                // AudioSource audio = col.gameObject.GetComponent<AudioSource>();
+                waterWalk.Stop();
+                AudioSource.PlayClipAtPoint(waterWalk.clip, this.gameObject.transform.position);
              
              waterTime = milliseconds;
+            }
+        }
+
+        if ((col.gameObject.tag.Equals("Water") || col.gameObject.tag.Equals("Poison")) && Input.GetKey(KeyCode.Space))
+        {
+
+            long milliseconds = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+
+            if (milliseconds > waterTime + 300)
+            {
+
+                // AudioSource audio = col.gameObject.GetComponent<AudioSource>();
+                jumpaudio.Stop();
+                waterJump.Stop();
+                AudioSource.PlayClipAtPoint(waterJump.clip, this.gameObject.transform.position);
+
+                waterTime = milliseconds;
             }
         }
 

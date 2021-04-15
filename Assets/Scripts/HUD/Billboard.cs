@@ -5,11 +5,17 @@ using UnityEngine;
 public class Billboard : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Transform camra;
+    public Transform cameera;
+
+    public void Start ()
+    {
+        GameObject[] camera = GameObject.FindGameObjectsWithTag("MainCamera");
+        cameera= camera[0].transform;
+    }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.LookAt(transform.position + camra.forward);
+        transform.LookAt(transform.position + cameera.forward);
     }
 }

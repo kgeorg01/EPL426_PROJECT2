@@ -8,13 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: a04635dc4b5761e459a98df313a247a2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: e6dc79c9122fdb243841f29c72b8e202
   - enabled: 0
     path: Assets/Scenes/OptionMenu.unity
     guid: 2525223777078ad488a154d7f90ecc00
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Collectibles.unity
     guid: acf7d13d84b7c1745afc6bd33c37c3fd
+  - enabled: 1
+    path: Assets/Scenes/Level1Forest.unity
+    guid: a7ee6fdb2a1850b4f81511b289eae744
+  - enabled: 1
+    path: Assets/Scenes/Level3Castle.unity
+    guid: 79905ccf1c0ca184ea63eda91a9094e5
   m_configObjects: {}

@@ -276,7 +276,7 @@ MonoBehaviour:
   health: 75
   attacking: 0
   dead: 0
-  healthBar: {fileID: 6673414119064894062}
+  healthBar: {fileID: 694722128187323004}
 --- !u!114 &1848868068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
   anim: {fileID: 1848868064}
   attackRange: {fileID: 0}
   enemyType: 2
-  healthbar: {fileID: 8174127411959979949}
+  healthbar: {fileID: 8855688649599511243}
   arrow: {fileID: 5203811881144288120, guid: 2b934fc161d98b24aa223a44691c47c5, type: 3}
   enemyVar: {fileID: 1848868067}
 --- !u!1001 &6978436737450853994
@@ -421,6 +421,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7445253103382045057}
     m_Modifications:
+    - target: {fileID: 29707011724020620, guid: 48e2ef9e776aca040b414c4ca91f4f40,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 801335077192584638, guid: 48e2ef9e776aca040b414c4ca91f4f40,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -548,15 +553,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48e2ef9e776aca040b414c4ca91f4f40, type: 3}
---- !u!1 &8174127411959979949 stripped
+--- !u!1 &8855688649599511243 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1272327023637374829, guid: 48e2ef9e776aca040b414c4ca91f4f40,
+  m_CorrespondingSourceObject: {fileID: 1890908027741475339, guid: 48e2ef9e776aca040b414c4ca91f4f40,
     type: 3}
   m_PrefabInstance: {fileID: 6978436738278586560}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6673414119064894062 stripped
+--- !u!114 &694722128187323004 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4342835590426854062, guid: 48e2ef9e776aca040b414c4ca91f4f40,
+  m_CorrespondingSourceObject: {fileID: 7601026297326996156, guid: 48e2ef9e776aca040b414c4ca91f4f40,
     type: 3}
   m_PrefabInstance: {fileID: 6978436738278586560}
   m_PrefabAsset: {fileID: 0}
