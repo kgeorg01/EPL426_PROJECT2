@@ -18,7 +18,18 @@ public class playerController : MonoBehaviour
     private bool spikeEntered = false;
     private bool enemyEntered = false;
     private long waterTime=0;
+    private long soundDelay = 0;
     public playerVariables playervar;
+
+
+    //Terrain type sounds (if is not here then there wont be a footstep sound.)
+    public AudioSource grassWalk;
+    public AudioSource rockWalk;
+    public AudioSource dirtWalk;
+    public AudioSource gravelWalk;
+    public AudioSource mudWalk;
+    public AudioSource defaultWalk;
+
 
     private void Start()
     {
@@ -160,6 +171,8 @@ public class playerController : MonoBehaviour
                 playerVariables.dead = true;
                 playerVariables.falling = true;
             }
+
+       
         }
 
 
@@ -274,6 +287,7 @@ public class playerController : MonoBehaviour
             }
         }
 
+
         if ((col.gameObject.tag.Equals("Water") || col.gameObject.tag.Equals("Poison")) && Input.GetKey(KeyCode.Space))
         {
 
@@ -317,6 +331,8 @@ public class playerController : MonoBehaviour
         }
     }
 
-  
+
 
 }
+
+

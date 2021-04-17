@@ -41,8 +41,12 @@ public class playerVariables : MonoBehaviour
     public  HUDGold goldInd;
     public  HUDPotion potionInd;
 
+    //sound
+    public bool sound = true;
+
     //SaveSystem
     private static string SaveSystemInstruction = "0";
+    
 
     private void Start()
     {
