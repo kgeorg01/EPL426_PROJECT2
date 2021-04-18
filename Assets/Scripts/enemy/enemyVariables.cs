@@ -7,6 +7,7 @@ public class enemyVariables : MonoBehaviour
     public int health;
     public bool attacking = false;
     public bool dead = false;
+    public int fistdamage = 1;
     public HUDHealthBar healthBar;
     // Start is called before the first frame update
     

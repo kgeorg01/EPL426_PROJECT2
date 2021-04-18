@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9005506}
-  m_LocalRotation: {x: 0.08078631, y: -0.046495136, z: 0.0037726213, w: 0.99563926}
+  m_LocalRotation: {x: 0.08078632, y: -0.046495136, z: 0.0037726215, w: 0.99563926}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -887,7 +887,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928851581}
-  m_LocalRotation: {x: 0.23374492, y: 0.000000016694761, z: -0.0000000040134975, w: 0.97229797}
+  m_LocalRotation: {x: 0.23374492, y: -0.00000001672973, z: 0.0000000040219033, w: 0.97229797}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1398,7 +1398,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 695be21ef056df946b1746e149dc9cf5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1621,8 +1621,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.26, z: 0.4}
-  m_Center: {x: 1.9669336e-13, y: 0.014786884, z: -5.202143e-13}
+  m_Size: {x: 0.1, y: 0.26, z: 0.2612419}
+  m_Center: {x: 1.7623835e-13, y: 0.014786884, z: 0.063674}
 --- !u!114 &3487905329303609121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1640,6 +1640,8 @@ MonoBehaviour:
   dirtWalk: {fileID: 1216988828078698161}
   gravelWalk: {fileID: 3369208424801961318}
   mudWalk: {fileID: 5496370956058657788}
+  waterWalk: {fileID: 7124215190335577546}
+  poisonWalk: {fileID: 8924693777754407525}
   defaultWalk: {fileID: 5355727494395831362}
   playervar: {fileID: 1270017436936363339}
 --- !u!65 &6823435462291115666
@@ -1653,8 +1655,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.26893258, z: 0.4}
-  m_Center: {x: 9.713066e-14, y: 0.0155337155, z: -6.632605e-13}
+  m_Size: {x: 0.1, y: 0.26416063, z: 0.26692408}
+  m_Center: {x: 1.500038e-13, y: 0.01791969, z: 0.06653795}
 --- !u!114 &4330163852378680037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1672,6 +1674,8 @@ MonoBehaviour:
   dirtWalk: {fileID: 1216988828078698161}
   gravelWalk: {fileID: 3369208424801961318}
   mudWalk: {fileID: 5496370956058657788}
+  waterWalk: {fileID: 7124215190335577546}
+  poisonWalk: {fileID: 8924693777754407525}
   defaultWalk: {fileID: 5355727494395831362}
   playervar: {fileID: 1270017436936363339}
 --- !u!1 &2964113177607036823
@@ -1685,7 +1689,7 @@ GameObject:
   - component: {fileID: 8943367542192567700}
   - component: {fileID: 8924693777754407525}
   m_Layer: 0
-  m_Name: waterJump
+  m_Name: poisonWalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1716,9 +1720,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 958a520b1fbe8b84983c17bcc47916f4,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 975702be8925fc843a5d5ee07ddcaa5c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 695be21ef056df946b1746e149dc9cf5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0

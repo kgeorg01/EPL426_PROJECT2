@@ -23,6 +23,8 @@ TagManager:
   - Water
   - Lava
   - fireStatue
+  - Arrow15
+  - Arrow20
   layers:
   - Default
   - TransparentFX

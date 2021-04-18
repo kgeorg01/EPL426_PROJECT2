@@ -11,24 +11,15 @@ public class playerController : MonoBehaviour
     public AudioSource walk;
     public AudioSource jumpaudio;
     public AudioSource armouraudio;
-    public AudioSource waterWalk;
-    public AudioSource waterJump;
     private float lastclick = 0;
     private int counter = 0;
     private bool spikeEntered = false;
     private bool enemyEntered = false;
-    private long waterTime=0;
     private long soundDelay = 0;
     public playerVariables playervar;
 
 
-    //Terrain type sounds (if is not here then there wont be a footstep sound.)
-    public AudioSource grassWalk;
-    public AudioSource rockWalk;
-    public AudioSource dirtWalk;
-    public AudioSource gravelWalk;
-    public AudioSource mudWalk;
-    public AudioSource defaultWalk;
+
 
 
     private void Start()
@@ -187,7 +178,10 @@ public class playerController : MonoBehaviour
         {
             playervar.TakeDamage(10);
         }
-      
+        if (collision.gameObject.tag.Equals("Arrow15"))
+        {
+            playervar.TakeDamage(15);
+        }
 
     }
 
@@ -229,12 +223,13 @@ public class playerController : MonoBehaviour
 
             }
         }
-        if (col.tag == "EnemyAttack")
+        if (col.tag == "EnemyAttack" && !col.gameObject.GetComponentInParent<enemyVariables>().dead)
         {
             if (!spikeEntered)
             {
                 enemyEntered = true;
-                playervar.TakeDamage(1);
+                int dmg = col.gameObject.GetComponentInParent<enemyVariables>().fistdamage;
+                playervar.TakeDamage(dmg);
 
             }
         }
@@ -250,7 +245,7 @@ public class playerController : MonoBehaviour
         {
             col.GetComponent<firestream>().enabled = true;
             col.transform.GetChild(1).gameObject.SetActive(true);
-            Debug.Log("enter");
+            
         }
 
     }
@@ -273,37 +268,6 @@ public class playerController : MonoBehaviour
             }
         }
 
-        if ( (col.gameObject.tag.Equals("Water") || col.gameObject.tag.Equals("Poison")) && Input.GetKey(KeyCode.W) )
-        {
-            long milliseconds = DateTimeOffset.Now.ToUnixTimeMilliseconds();
-
-            if (milliseconds > waterTime + 400 ) {
-
-                // AudioSource audio = col.gameObject.GetComponent<AudioSource>();
-                waterWalk.Stop();
-                AudioSource.PlayClipAtPoint(waterWalk.clip, this.gameObject.transform.position);
-             
-             waterTime = milliseconds;
-            }
-        }
-
-
-        if ((col.gameObject.tag.Equals("Water") || col.gameObject.tag.Equals("Poison")) && Input.GetKey(KeyCode.Space))
-        {
-
-            long milliseconds = DateTimeOffset.Now.ToUnixTimeMilliseconds();
-
-            if (milliseconds > waterTime + 300)
-            {
-
-                // AudioSource audio = col.gameObject.GetComponent<AudioSource>();
-                jumpaudio.Stop();
-                waterJump.Stop();
-                AudioSource.PlayClipAtPoint(waterJump.clip, this.gameObject.transform.position);
-
-                waterTime = milliseconds;
-            }
-        }
 
     }
 
@@ -327,7 +291,7 @@ public class playerController : MonoBehaviour
         {
             other.GetComponent<firestream>().enabled = false;
             other.transform.GetChild(1).gameObject.SetActive(false);
-            Debug.Log("LEAVE");
+            
         }
     }
 
