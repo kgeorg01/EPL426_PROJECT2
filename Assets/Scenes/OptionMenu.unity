@@ -1620,6 +1620,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 8205640227721498861, guid: 4ada66e7f7e1eed4e9d645439298fb28,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ada66e7f7e1eed4e9d645439298fb28, type: 3}
 --- !u!1 &890351971
