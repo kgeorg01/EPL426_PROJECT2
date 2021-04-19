@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1Forest.unity
     guid: a7ee6fdb2a1850b4f81511b289eae744
   - enabled: 1
-    path: Assets/Scenes/Level3Castle.unity
+    path: Assets/Scenes/Level3Castle/Level3Castle.unity
     guid: 79905ccf1c0ca184ea63eda91a9094e5
   m_configObjects: {}
