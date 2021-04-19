@@ -88,6 +88,10 @@ public class playerVariables : MonoBehaviour
         SaveSystemInstruction = "0";
     }
 
+    public void LateUpdate()
+    {
+        if (health == 0) dead = true;
+    }
     public void SetDamage (int dmg)
     {
         attackDamage = dmg;
