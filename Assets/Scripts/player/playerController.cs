@@ -220,6 +220,7 @@ public class playerController : MonoBehaviour
             {
                 spikeEntered = true;
                 playervar.TakeDamage(50);
+                Invoke("activateTrap", 3f);
 
             }
         }
@@ -269,6 +270,11 @@ public class playerController : MonoBehaviour
         }
 
 
+    }
+
+    private void activateTrap()
+    {
+        spikeEntered = false;
     }
 
     private void OnTriggerExit(Collider other)
