@@ -33,9 +33,14 @@ public class FootStepSound : MonoBehaviour
         //Poison and water are game objects with the tag. Terrain sound wont play if that tag is found.
         if (col.gameObject.tag.Equals("Water")) {
             AudioSource.PlayClipAtPoint(waterWalk.clip, this.gameObject.transform.position);
+            
             return;
         } else if (col.gameObject.tag.Equals("Poison")) {
             AudioSource.PlayClipAtPoint(poisonWalk.clip, this.gameObject.transform.position);
+            return;
+        } else if (col.gameObject.tag.Equals("LavaPool"))
+        {
+            //no sound on lava, is handled by the parent
             return;
         }
 

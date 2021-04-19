@@ -88,28 +88,52 @@ public static class SaveSystem
         }
         foreach (GameObject collect in collectI)
         {
-            collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
-
+            try
+            {
+                collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
+            }catch (System.Exception e)
+            {
+                Debug.LogError("Ingot Missing");
+            }
             i++;
         }
         foreach (GameObject collect in collectC)
         {
-            collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
-
-            i++;
+            try
+            {
+                collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("Coin Missing");
+            }
+                i++;
         }
         foreach (GameObject collect in collectS)
         {
-            collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
-
-            i++;
+            try
+            {
+                collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("ShieldMissing");
+            }
+                i++;
         }
 
         foreach (GameObject collect in collectB)
         {
-            collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
+            try
+            {
+                collectID[i] = collect.GetComponent<UniqueID>().uniqueId;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("Crate Missing");
 
-            i++;
+            }
+                i++;
         }
 
 
@@ -155,14 +179,22 @@ public static class SaveSystem
             allCollect.AddRange(collectS);
             allCollect.AddRange(collectB);
 
-            Debug.Log("LoadList");
+          
 
             //THE GAME OBJECTS MUST HAVE A COMPONENT WITH THE SCRIPT "UniqueID"
             foreach (GameObject coll in allCollect)
             {
-                string id = coll.GetComponent<UniqueID>().uniqueId;
+                string id = "0";
+                try
+                {
+                     id = coll.GetComponent<UniqueID>().uniqueId;
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogError("Missing Object");
+                }
 
-                if (loadCollect.Contains(id))
+                    if (loadCollect.Contains(id))
                 {
                     coll.SetActive(true);
                 }
@@ -193,7 +225,7 @@ public static class SaveSystem
         EnemyData[] enemyData = new EnemyData[enemies.Length];
 
 
-        Debug.Log("SaveListE");
+  
 
         //THE GAME OBJECTS MUST HAVE A COMPONENT WITH THE SCRIPT "UniqueID"
 
@@ -242,7 +274,7 @@ public static class SaveSystem
             List<GameObject> enemiesList = new List<GameObject>(enemiesArray);
           
 
-            Debug.Log("LoadListE");
+         
 
             //THE GAME OBJECTS MUST HAVE A COMPONENT WITH THE SCRIPT "UniqueID"
             foreach (GameObject enem in enemiesList)
@@ -257,7 +289,7 @@ public static class SaveSystem
                         found = true;
                         enem.SetActive(true);
                         enem.GetComponent<enemyVariables>().health = loadEnem.health;
-                        Debug.Log(enem.GetComponent<enemyVariables>().health);
+                        
                         enem.GetComponent<enemyVariables>().healthBar.SetHealth(loadEnem.health);
 
                         Vector3 position;

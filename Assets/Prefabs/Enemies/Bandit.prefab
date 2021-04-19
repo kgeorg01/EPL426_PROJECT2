@@ -154,8 +154,7 @@ PrefabInstance:
     - target: {fileID: 86859974, guid: 0effa6c7f4abbf948af78c132482e5b4, type: 3}
       propertyPath: arrow
       value: 
-      objectReference: {fileID: 5203811881144288120, guid: 2b934fc161d98b24aa223a44691c47c5,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 86859974, guid: 0effa6c7f4abbf948af78c132482e5b4, type: 3}
       propertyPath: healthbar
       value: 

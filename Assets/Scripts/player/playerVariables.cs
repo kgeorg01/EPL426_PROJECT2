@@ -229,6 +229,7 @@ public class playerVariables : MonoBehaviour
     public void SavePlayer(int slot)
     {
         Debug.Log("Saving ...");
+        Debug.Log(transform.position);
         SaveSystem.SavePlayer(this , slot);
 
 
@@ -237,7 +238,7 @@ public class playerVariables : MonoBehaviour
     public void LoadPlayer (int slot, bool loadScene = false )
     {
 
-        Debug.Log("Loading ...");
+        
         PlayerData pd = SaveSystem.LoadPlayer(slot);
         SaveSystemInstruction = "load" + slot;
 
@@ -254,7 +255,7 @@ public class playerVariables : MonoBehaviour
     {
         //THE GAME OBJECTS MUST HAVE A COMPONENT WITH THE SCRIPT "UniqueID" (potions , shield, gold etc)
         PlayerData pd = SaveSystem.LoadPlayer(slot , true);
-        Debug.Log("Loading ...2");
+        Debug.Log("Loading ...");
         maxHealth = pd.maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 

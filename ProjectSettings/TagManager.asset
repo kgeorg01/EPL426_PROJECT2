@@ -25,6 +25,7 @@ TagManager:
   - fireStatue
   - Arrow15
   - Arrow20
+  - LavaPool
   layers:
   - Default
   - TransparentFX

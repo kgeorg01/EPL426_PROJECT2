@@ -18,8 +18,8 @@ public class playerController : MonoBehaviour
     private long soundDelay = 0;
     public playerVariables playervar;
 
-
-
+    private float lavaPoolDamage = 0;
+    public AudioSource lavaSound;
 
 
     private void Start()
@@ -141,10 +141,8 @@ public class playerController : MonoBehaviour
 
     private void consumeHealthPotion()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            playervar.DrinkPotion();
-        }
+         playervar.DrinkPotion();
+        
     }
 
 
@@ -156,19 +154,28 @@ public class playerController : MonoBehaviour
             RotatePlayer();
             Jump();
             Attack();
-            consumeHealthPotion();
+            
             if (transform.position.y < -8)
             {
                 playerVariables.dead = true;
                 playerVariables.falling = true;
             }
 
-       
+            if (lavaPoolDamage >= 1.5)
+            {
+                lavaPoolDamage = 0;
+            }
+            lavaPoolDamage += Time.fixedDeltaTime;
+
         }
 
 
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H)) consumeHealthPotion();
+    }
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag.Equals("Ground")) {
@@ -268,6 +275,16 @@ public class playerController : MonoBehaviour
             }
         }
 
+        if (col.tag == "LavaPool")
+        {
+            playerVariables.speed = 3f;
+            if (lavaPoolDamage >= 1.5)
+            {
+                playervar.TakeDamage(2);
+                AudioSource.PlayClipAtPoint(lavaSound.clip, this.gameObject.transform.position);
+            }
+        }
+
 
     }
 
@@ -293,6 +310,15 @@ public class playerController : MonoBehaviour
             other.transform.GetChild(1).gameObject.SetActive(false);
             
         }
+
+        if (other.tag == "LavaPool")
+        {
+            
+             playerVariables.speed = 5f;
+            
+        }
+
+
     }
 
 
