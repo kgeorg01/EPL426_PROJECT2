@@ -26,6 +26,8 @@ TagManager:
   - Arrow15
   - Arrow20
   - LavaPool
+  - NextLevel
+  - OptionMenu
   layers:
   - Default
   - TransparentFX

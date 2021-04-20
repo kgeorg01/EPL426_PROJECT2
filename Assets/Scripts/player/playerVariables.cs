@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -83,15 +84,80 @@ public class playerVariables : MonoBehaviour
         if (SaveSystemInstruction == "load1") LoadData(1);
         else if (SaveSystemInstruction == "load2") LoadData(2);
         else if (SaveSystemInstruction == "load3") LoadData(3);
-        else if(SaveSystemInstruction == "load0") LoadData(0); //doesnt load a scence and used the secret save 0. (save on 0 when finishing a level and load 0 when starting a new level)
+        else if(SaveSystemInstruction == "load0") LoadData(0, false); //doesnt load a scence and used the secret save 0. (save on 0 when finishing a level and load 0 when starting a new level)
 
         SaveSystemInstruction = "0";
+
+       
+       LoadOptionPreferences();
+
     }
 
     public void LateUpdate()
     {
         if (health == 0) dead = true;
     }
+
+    private void LoadOptionPreferences()
+    {
+        //GameObject [] optionMenuUI = GameObject.FindGameObjectsWithTag("OptionMenu");
+        OptionsMenu[] optionMenus = GameObject.FindObjectsOfType<OptionsMenu>(true);
+        Debug.Log("Options");
+        Debug.Log(optionMenus.Length);
+        OptionsMenu optionMenu = optionMenus[0];
+
+        try
+        {
+            optionMenu.setVolume(PlayerPrefs.GetFloat("volume"));
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("Cant load preferences volume");
+        }
+
+        try
+        {
+            optionMenu.setMusic(PlayerPrefs.GetFloat("music"));
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("Cant load preferences music");
+        }
+
+        try
+        {
+            optionMenu.setQuality(PlayerPrefs.GetInt("quality"));
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("Cant load preferences quality");
+        }
+
+        try
+        {
+            if (PlayerPrefs.GetInt("fullscreen") == 1) optionMenu.setFulllscreen(true);
+            else optionMenu.setFulllscreen(false);
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("Cant load preferences fullscreen");
+        }
+
+       // try
+        //{
+            Debug.Log("Resolution");
+            Debug.Log(PlayerPrefs.GetInt("resolution"));
+            optionMenu.setResolution(PlayerPrefs.GetInt("resolution"));
+      //  }
+       // catch (Exception e)
+       // {
+         //   Debug.LogWarning("Cant load preferences resolution");
+       // }
+
+    }
+
+
+
     public void SetDamage (int dmg)
     {
         attackDamage = dmg;
@@ -233,32 +299,38 @@ public class playerVariables : MonoBehaviour
     public void SavePlayer(int slot)
     {
         Debug.Log("Saving ...");
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
         SaveSystem.SavePlayer(this , slot);
 
 
     }
 
-    public void LoadPlayer (int slot, bool loadScene = false )
+    public void LoadPlayer (int slot)
     {
 
         
-        PlayerData pd = SaveSystem.LoadPlayer(slot);
+       
         SaveSystemInstruction = "load" + slot;
 
         Time.timeScale = 1f;
-        if (slot !=0) SceneManager.LoadScene(pd.scenceIdx);
+        if (slot == 0)
+        {
 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //loads the next scene. Must be in the correct order in build scene.
+        }
+        else
+        {
+            PlayerData pd = SaveSystem.LoadPlayer(slot);
+            SceneManager.LoadScene(pd.scenceIdx);
 
-       // if (loadScene) SceneManager.LoadScene(pd.scenceIdx);
-
+        }
 
     }
 
-    public void LoadData (int slot)
+    public void LoadData (int slot, bool pos = true )
     {
         //THE GAME OBJECTS MUST HAVE A COMPONENT WITH THE SCRIPT "UniqueID" (potions , shield, gold etc)
-        PlayerData pd = SaveSystem.LoadPlayer(slot , true);
+        PlayerData pd = SaveSystem.LoadPlayer(slot );
         Debug.Log("Loading ...");
         maxHealth = pd.maxHealth;
         healthBar.SetMaxHealth(maxHealth);
@@ -282,11 +354,14 @@ public class playerVariables : MonoBehaviour
 
         attackDamage = pd.attackDamage;
 
-        Vector3 position;
-        position.x = pd.position[0];
-        position.y = pd.position[1];
-        position.z = pd.position[2];
-        transform.position = position;
+        if (pos)
+        {
+            Vector3 position;
+            position.x = pd.position[0];
+            position.y = pd.position[1];
+            position.z = pd.position[2];
+            transform.position = position;
+        }
 
     }
 

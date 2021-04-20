@@ -1724,6 +1724,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 1290443550748961396, guid: 414fdb04478f1c64eb27596300dc2663,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 414fdb04478f1c64eb27596300dc2663, type: 3}
 --- !u!4 &1552614484169461715 stripped
@@ -1822,6 +1827,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ingot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968039388242804736, guid: 75b25e1c9f0e3a94f95135c4a3cb7694,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1968039388243237920, guid: 75b25e1c9f0e3a94f95135c4a3cb7694,
         type: 3}
@@ -1987,6 +1997,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthPotion (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 577721841381807519, guid: 97ba157c29afec54ca5eada67f2a92a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 580317051882201031, guid: 97ba157c29afec54ca5eada67f2a92a4,
         type: 3}
@@ -2274,6 +2289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Coin (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1290443550748961396, guid: 414fdb04478f1c64eb27596300dc2663,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 414fdb04478f1c64eb27596300dc2663, type: 3}
@@ -2596,6 +2616,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shield
       objectReference: {fileID: 0}
+    - target: {fileID: 2420351282575298662, guid: aec1c1fe22faa8a4885be97c13ab82c7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aec1c1fe22faa8a4885be97c13ab82c7, type: 3}
 --- !u!4 &2735300833778363159 stripped
@@ -2816,6 +2841,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthPotion
+      objectReference: {fileID: 0}
+    - target: {fileID: 577721841381807519, guid: 97ba157c29afec54ca5eada67f2a92a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 580317051882201031, guid: 97ba157c29afec54ca5eada67f2a92a4,
         type: 3}
@@ -3066,6 +3096,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthPotion (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 577721841381807519, guid: 97ba157c29afec54ca5eada67f2a92a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 580317051882201031, guid: 97ba157c29afec54ca5eada67f2a92a4,
         type: 3}
@@ -3959,7 +3994,8 @@ PrefabInstance:
         type: 3}
       propertyPath: playerVar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1270017436936363339, guid: ea146cb1688a71141999d4a55daef51c,
+        type: 3}
     - target: {fileID: 7395878589652162408, guid: 4ada66e7f7e1eed4e9d645439298fb28,
         type: 3}
       propertyPath: m_AnchoredPosition.x

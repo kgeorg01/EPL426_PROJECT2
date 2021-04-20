@@ -256,6 +256,15 @@ public class playerController : MonoBehaviour
             
         }
 
+        if (col.tag == "NextLevel")
+        {
+
+            playervar.SavePlayer(0);
+            playervar.LoadPlayer(0);
+
+        }
+
+
     }
 
     private void OnTriggerStay(Collider col) {

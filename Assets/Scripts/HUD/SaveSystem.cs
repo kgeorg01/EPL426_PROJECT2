@@ -22,12 +22,13 @@ public static class SaveSystem
         formatter.Serialize(stream, pd);
         stream.Close();
 
-        SaveCollectibles(slot);
-        SaveEnemies(slot);
-
+        if (slot > 0) { 
+            SaveCollectibles(slot);
+            SaveEnemies(slot);
+        }
     }
 
-    public static PlayerData LoadPlayer(int slot, bool allData = false)
+    public static PlayerData LoadPlayer(int slot)
     {
 
         string saveName = "player" + slot + ".save";
@@ -45,7 +46,7 @@ public static class SaveSystem
             //  Time.timeScale = 1f;
             //SceneManager.LoadScene(pd.scenceIdx , LoadSceneMode.Single);
 
-            if (allData)
+            if (slot >0)
             {
                 LoadCollectibles(slot);
                 LoadEnemies(slot);

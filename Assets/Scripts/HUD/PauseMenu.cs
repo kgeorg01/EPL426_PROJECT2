@@ -47,7 +47,7 @@ public class PauseMenu : MonoBehaviour
         gamePaused = true;
     }
 
-    public void loadMenu ()
+    public void loadMenu () // MAIN MENU
     {
         Debug.Log("MainMenu");
         Time.timeScale = 1f;
@@ -73,7 +73,7 @@ public class PauseMenu : MonoBehaviour
         
     }
 
-    public void LoadMenu()
+    public void LoadMenu() //Load Game Menu
     {
         pauseMenuUI.SetActive(false);
         loadMenuUI.SetActive(true);

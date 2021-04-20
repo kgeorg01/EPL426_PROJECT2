@@ -8,7 +8,7 @@ public class enterShop : MonoBehaviour
     public GameObject shop;
     private void OnTriggerEnter(Collider other)
     {
-        if (!false && other.tag.Equals("Player"))
+        if (!active && other.tag.Equals("Player"))
         {
             active = true;
             shop.SetActive(true);
