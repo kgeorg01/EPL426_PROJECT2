@@ -25,82 +25,36 @@ public class OptionsMenu : MonoBehaviour
     void Start()
     {
 
-       // callerUI.SetActive(false);
-       //optionMenuUI.SetActive(false);
-
-        res = Screen.resolutions;
-        resolutionDropdown.ClearOptions();
-
-        List<string> opts = new List<string>();
-        int currentResIndx = 0;
-        for (int i =0; i<res.Length;i++)
+        // callerUI.SetActive(false);
+        //optionMenuUI.SetActive(false);
+        if (res == null)
         {
-            string opt = res[i].width + " x " + res[i].height;
-            opts.Add(opt);
+          
 
-            if (res[i].width == Screen.width && res[i].height==Screen.height)
+            res = Screen.resolutions;
+            resolutionDropdown.ClearOptions();
+
+            List<string> opts = new List<string>();
+            int currentResIndx = 0;
+            for (int i = 0; i < res.Length; i++)
             {
-                currentResIndx = i;
+                string opt = res[i].width + " x " + res[i].height;
+                opts.Add(opt);
+
+                if (res[i].width == Screen.width && res[i].height == Screen.height)
+                {
+                    currentResIndx = i;
+                }
+
             }
 
+            resolutionDropdown.AddOptions(opts);
+            resolutionDropdown.value = currentResIndx;
+            resolutionDropdown.RefreshShownValue();
         }
-
-        resolutionDropdown.AddOptions(opts);
-       // resolutionDropdown.value = currentResIndx;
-        //resolutionDropdown.RefreshShownValue();
-
     }
 
-    //public void OnEnabled()
-    //{
-    //    LoadOptionPreferences();
-    //}
-
-    private void LoadOptionPreferences()
-    {
-        //GameObject [] optionMenuUI = GameObject.FindGameObjectsWithTag("OptionMenu");
-        OptionsMenu[] optionMenus = GameObject.FindObjectsOfType<OptionsMenu>(true);
-        Debug.Log("Options");
-        Debug.Log(optionMenus.Length);
-        OptionsMenu optionMenu = optionMenus[0];
-
-        try{
-            optionMenu.setVolume(PlayerPrefs.GetFloat("volume"));
-        }
-        catch (Exception e) {
-            Debug.LogWarning("Cant load preferences volume");
-        }
-
-        try{
-            optionMenu.setMusic(PlayerPrefs.GetFloat("music"));
-        }
-        catch (Exception e){
-            Debug.LogWarning("Cant load preferences music");
-        }
-
-        try {
-            optionMenu.setQuality(PlayerPrefs.GetInt("quality"));
-        }
-        catch (Exception e) {
-            Debug.LogWarning("Cant load preferences quality");
-        }
-
-        try{
-            if (PlayerPrefs.GetInt("fullscreen") == 1) optionMenu.setFulllscreen(true);
-            else optionMenu.setFulllscreen(false);
-        }
-        catch (Exception e){
-            Debug.LogWarning("Cant load preferences fullscreen");
-        }
-
-       // try{
-            optionMenu.setResolution( PlayerPrefs.GetInt("resolution"));
-       // }
-       // catch (Exception e){
-        //    Debug.LogWarning("Cant load preferences resolution");
-       // } 
-
-    }
+ 
 
     public void setVolume (float volume)
     {
@@ -133,7 +87,6 @@ public class OptionsMenu : MonoBehaviour
     public void setResolution (int resIndx)
     {
         PlayerPrefs.SetInt("resolution", resIndx);
-        Debug.Log(resIndx);
         if (res == null) Start();
         Resolution resolution = res[resIndx];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
@@ -146,8 +99,6 @@ public class OptionsMenu : MonoBehaviour
         optionMenuUI.SetActive(false);
         callerUI.SetActive(true);
         
-        //string sceneName = PlayerPrefs.GetString("optionSceneCaller");
-        //SceneManager.LoadScene(sceneName);
     }
 
 }

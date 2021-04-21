@@ -15,6 +15,9 @@ public class enemyController : MonoBehaviour
     public GameObject arrow;
     public enemyVariables enemyVar;
 
+    private int counter = 0;
+    private float lavaPoolDamage = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,14 @@ public class enemyController : MonoBehaviour
             ArcherControl();
         }
         
+    }
+    void FixedUpdate()
+    {
+        if (lavaPoolDamage >= 1.5)
+        {
+            lavaPoolDamage = 0;
+        }
+        lavaPoolDamage += Time.fixedDeltaTime;
     }
 
     void attack()
@@ -122,4 +133,61 @@ public class enemyController : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+       
+        if (collision.gameObject.tag.Equals("Arrow"))
+        {
+            enemyVar.TakeDamage(7);
+        }
+        if (collision.gameObject.tag.Equals("Arrow15"))
+        {
+            enemyVar.TakeDamage(10);
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "Lava")
+        {
+            enemyVar.TakeDamage(999);
+        }
+    }
+
+    private void OnTriggerStay(Collider col)
+    {
+        if (col.tag == "Poison")
+        {
+            counter++;
+            if (counter == 20)
+            {
+                counter = 0;
+                enemyVar.TakeDamage(1);
+            }
+        }
+        if (col.tag == "Fire")
+        {
+            counter++;
+            if (counter == 20)
+            {
+                counter = 0;
+                enemyVar.TakeDamage(1);
+            }
+        }
+
+        if (col.tag == "LavaPool")
+        {
+            if (lavaPoolDamage >= 1.5)
+            {
+                enemyVar.TakeDamage(1);
+            }
+        }
+    }
+
+      
+
+    
+
 }

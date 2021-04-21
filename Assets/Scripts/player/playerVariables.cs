@@ -100,10 +100,11 @@ public class playerVariables : MonoBehaviour
 
     private void LoadOptionPreferences()
     {
+
+        Debug.Log("Player");
+
         //GameObject [] optionMenuUI = GameObject.FindGameObjectsWithTag("OptionMenu");
         OptionsMenu[] optionMenus = GameObject.FindObjectsOfType<OptionsMenu>(true);
-        Debug.Log("Options");
-        Debug.Log(optionMenus.Length);
         OptionsMenu optionMenu = optionMenus[0];
 
         try
@@ -143,16 +144,14 @@ public class playerVariables : MonoBehaviour
             Debug.LogWarning("Cant load preferences fullscreen");
         }
 
-       // try
-        //{
-            Debug.Log("Resolution");
-            Debug.Log(PlayerPrefs.GetInt("resolution"));
+       try
+        {
             optionMenu.setResolution(PlayerPrefs.GetInt("resolution"));
-      //  }
-       // catch (Exception e)
-       // {
-         //   Debug.LogWarning("Cant load preferences resolution");
-       // }
+      }
+       catch (Exception e)
+       {
+          Debug.LogWarning("Cant load preferences resolution");
+      }
 
     }
 

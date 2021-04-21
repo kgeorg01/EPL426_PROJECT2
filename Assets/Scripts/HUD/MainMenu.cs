@@ -25,8 +25,8 @@ public class MainMenu : MonoBehaviour
     {
         //GameObject [] optionMenuUI = GameObject.FindGameObjectsWithTag("OptionMenu");
         OptionsMenu[] optionMenus = GameObject.FindObjectsOfType<OptionsMenu>(true);
-        Debug.Log("Options");
-        Debug.Log(optionMenus.Length);
+        
+        
         OptionsMenu optionMenu = optionMenus[0];
 
         try
@@ -68,11 +68,11 @@ public class MainMenu : MonoBehaviour
 
         try
         {
-            optionMenu.setResolution(PlayerPrefs.GetInt("resolution"));
+        optionMenu.setResolution(PlayerPrefs.GetInt("resolution"));
         }
         catch (Exception e)
-        {
-            Debug.LogWarning("Cant load preferences resolution");
+         {
+          Debug.LogWarning("Cant load preferences resolution");
         }
 
     }

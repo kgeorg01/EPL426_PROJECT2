@@ -15,7 +15,6 @@ public class playerController : MonoBehaviour
     private int counter = 0;
     private bool spikeEntered = false;
     private bool enemyEntered = false;
-    private long soundDelay = 0;
     public playerVariables playervar;
 
     private float lavaPoolDamage = 0;
