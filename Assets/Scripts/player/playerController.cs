@@ -176,6 +176,14 @@ public class playerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H)) consumeHealthPotion();
     }
 
+    private void knockback(float hitForce = 3f)
+    {
+        Vector3 lastKnownPos = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+        Vector3 direction = lastKnownPos - (Vector3)(transform.position);
+        direction.Normalize();
+        rb.AddForce(-direction * hitForce, ForceMode.Impulse);
+    }
+
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag.Equals("Ground")) {
             playerVariables.grounded = true;
@@ -188,9 +196,22 @@ public class playerController : MonoBehaviour
         {
             playervar.TakeDamage(15);
         }
+        
+         if (collision.gameObject.tag.Equals("SpearTrap"))
+        {
+            playervar.TakeDamage(20);
+            knockback();
+        }
 
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Saw"))
+        {
+            playervar.TakeDamage(2);
+        }
+    }
     private void OnTriggerEnter(Collider col)
     {
         if(col.tag == "HealthPotion" && playervar.maxPotions>playervar.potions) {
@@ -263,6 +284,16 @@ public class playerController : MonoBehaviour
 
         }
 
+        if (col.gameObject.tag.Equals("TrapBlades"))
+        {
+            knockback();
+            playervar.TakeDamage(5);
+        }
+
+        if (col.gameObject.tag.Equals("GenTrap"))
+        {
+            playervar.TakeDamage(5);
+        }
 
     }
 

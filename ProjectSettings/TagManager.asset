@@ -28,6 +28,10 @@ TagManager:
   - LavaPool
   - NextLevel
   - OptionMenu
+  - TrapBlades
+  - GenTrap
+  - Saw
+  - SpearTrap
   layers:
   - Default
   - TransparentFX

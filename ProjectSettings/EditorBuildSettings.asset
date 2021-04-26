@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level4Town/Level4Town.unity
     guid: 8cecb0a237d7ca54bb844376a1e449bd
+  - enabled: 1
+    path: Assets/Scenes/level5Dungeon/level5Dungeon.unity
+    guid: 05f2d4fdf1ddddd4aa43f5d90baae873
   m_configObjects: {}
