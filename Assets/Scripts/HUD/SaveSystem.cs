@@ -285,12 +285,16 @@ public static class SaveSystem
                 foreach (EnemyData loadEnem in loadData)
                 {
                     string LoadID = loadEnem.id;
-                    if (LoadID == id)
+                    if (loadEnem.health>0 && LoadID == id)
                     {
                         found = true;
                         enem.SetActive(true);
+                      
+
+                        enem.GetComponent<enemyVariables>().maxHP = loadEnem.maxHP;
+                        enem.GetComponent<enemyVariables>().healthBar.SetMaxHealth(loadEnem.maxHP);
+
                         enem.GetComponent<enemyVariables>().health = loadEnem.health;
-                        
                         enem.GetComponent<enemyVariables>().healthBar.SetHealth(loadEnem.health);
 
                         Vector3 position;

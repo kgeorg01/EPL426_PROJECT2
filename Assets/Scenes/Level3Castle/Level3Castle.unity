@@ -1821,6 +1821,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1994436584}
     m_Modifications:
+    - target: {fileID: 1848868067, guid: ec89c1953c4f88542a0c88ec05007d9d, type: 3}
+      propertyPath: maxHP
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 570629537546597575, guid: ec89c1953c4f88542a0c88ec05007d9d,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -4191,6 +4195,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1994436584}
     m_Modifications:
+    - target: {fileID: 1848868067, guid: ec89c1953c4f88542a0c88ec05007d9d, type: 3}
+      propertyPath: maxHP
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 570629537546597575, guid: ec89c1953c4f88542a0c88ec05007d9d,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5536,6 +5544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1994436584}
     m_Modifications:
+    - target: {fileID: 1848868067, guid: ec89c1953c4f88542a0c88ec05007d9d, type: 3}
+      propertyPath: maxHP
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 570629537546597575, guid: ec89c1953c4f88542a0c88ec05007d9d,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5871,6 +5883,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1930803264698380888, guid: 22180d45b60d2ec41920075c2997594e,
+        type: 3}
+      propertyPath: maxHP
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8555278307094410836, guid: 22180d45b60d2ec41920075c2997594e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6029,35 +6046,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9005508, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08075588
+      value: 0.08073213
       objectReference: {fileID: 0}
     - target: {fileID: 9005508, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.053929776
+      value: -0.05908565
       objectReference: {fileID: 0}
     - target: {fileID: 9005508, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.004375869
+      value: 0.004794217
       objectReference: {fileID: 0}
     - target: {fileID: 9005508, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9952643
+      value: 0.9949715
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08075592
+      value: 0.08073216
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.053929783
+      value: -0.05908565
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0043758713
+      value: 0.004794219
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9952643
+      value: 0.99497145
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8260,6 +8277,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1930803264698380888, guid: 22180d45b60d2ec41920075c2997594e,
+        type: 3}
+      propertyPath: maxHP
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8555278307094410836, guid: 22180d45b60d2ec41920075c2997594e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8597,6 +8619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1994436584}
     m_Modifications:
+    - target: {fileID: 1848868067, guid: ec89c1953c4f88542a0c88ec05007d9d, type: 3}
+      propertyPath: maxHP
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 570629537546597575, guid: ec89c1953c4f88542a0c88ec05007d9d,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -11249,6 +11275,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1994436584}
     m_Modifications:
+    - target: {fileID: 1848868067, guid: ec89c1953c4f88542a0c88ec05007d9d, type: 3}
+      propertyPath: maxHP
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 570629537546597575, guid: ec89c1953c4f88542a0c88ec05007d9d,
         type: 3}
       propertyPath: m_AnchorMax.x

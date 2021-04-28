@@ -295,6 +295,8 @@ public class playerController : MonoBehaviour
             playervar.TakeDamage(5);
         }
 
+     
+
     }
 
     private void OnTriggerStay(Collider col) {
@@ -358,11 +360,11 @@ public class playerController : MonoBehaviour
 
         if (other.tag == "LavaPool")
         {
-            
-             playerVariables.speed = 5f;
+         
+            playerVariables.speed = 5f;
             
         }
-
+       
 
     }
 

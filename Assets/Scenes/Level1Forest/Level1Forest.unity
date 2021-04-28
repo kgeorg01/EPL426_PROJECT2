@@ -676,6 +676,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 679636081}
     m_Modifications:
+    - target: {fileID: 1848868067, guid: ec89c1953c4f88542a0c88ec05007d9d, type: 3}
+      propertyPath: maxHP
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 570629537546597575, guid: ec89c1953c4f88542a0c88ec05007d9d,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5357,19 +5361,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9005508, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.080755875
+      value: 0.080732115
       objectReference: {fileID: 0}
     - target: {fileID: 9005508, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.053929787
+      value: -0.059085656
       objectReference: {fileID: 0}
     - target: {fileID: 9005508, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.004375869
+      value: 0.0047942167
       objectReference: {fileID: 0}
     - target: {fileID: 9005508, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9952643
+      value: 0.9949715
       objectReference: {fileID: 0}
     - target: {fileID: 280377083, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: near clip plane
@@ -5397,19 +5401,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08075592
+      value: 0.08073216
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.05392979
+      value: -0.05908565
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.004375872
+      value: 0.004794219
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9952643
+      value: 0.99497145
       objectReference: {fileID: 0}
     - target: {fileID: 280377084, guid: ea146cb1688a71141999d4a55daef51c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13795,6 +13799,11 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1554077875}
+    - target: {fileID: 1930803264698380888, guid: 22180d45b60d2ec41920075c2997594e,
+        type: 3}
+      propertyPath: maxHP
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 8555278307094410836, guid: 22180d45b60d2ec41920075c2997594e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15354,6 +15363,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1848868067, guid: ec89c1953c4f88542a0c88ec05007d9d, type: 3}
       propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848868067, guid: ec89c1953c4f88542a0c88ec05007d9d, type: 3}
+      propertyPath: maxHP
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1848868068, guid: ec89c1953c4f88542a0c88ec05007d9d, type: 3}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class enemyVariables : MonoBehaviour
 {
     public int health;
+    public int maxHP;
     public bool attacking = false;
     public bool dead = false;
     public int fistdamage = 1;
@@ -13,11 +14,13 @@ public class enemyVariables : MonoBehaviour
     
     void Start()
     {
-      //  healthBar.SetMaxHealth(health);
+        //if (maxHP == null) maxHP = health;
+        //healthBar.SetMaxHealth(maxHP);
     }
     void death()
     {
         Destroy(gameObject);
+
     }
     public void TakeDamage(int damage)
     {
