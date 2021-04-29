@@ -145,7 +145,10 @@ public class enemyController : MonoBehaviour
         {
             enemyVar.TakeDamage(10);
         }
-
+        if (collision.gameObject.tag.Equals("SpearTrap"))
+        {
+            enemyVar.TakeDamage(20);
+        }
     }
 
     private void OnTriggerEnter(Collider col)
@@ -153,6 +156,17 @@ public class enemyController : MonoBehaviour
         if (col.tag == "Lava")
         {
             enemyVar.TakeDamage(999);
+        }
+
+        if (col.gameObject.tag.Equals("TrapBlades"))
+        {
+        
+            enemyVar.TakeDamage(5);
+        }
+
+        if (col.gameObject.tag.Equals("GenTrap"))
+        {
+            enemyVar.TakeDamage(5);
         }
     }
 
@@ -183,6 +197,11 @@ public class enemyController : MonoBehaviour
             {
                 enemyVar.TakeDamage(1);
             }
+        }
+
+        if (col.gameObject.tag.Equals("Saw"))
+        {
+            enemyVar.TakeDamage(2);
         }
     }
 

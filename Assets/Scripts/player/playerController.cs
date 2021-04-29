@@ -65,6 +65,14 @@ public class playerController : MonoBehaviour
         else if (playerVariables.mH < 0) transform.Rotate(Vector3.up, -180 * Time.deltaTime);
     }
 
+    private void RotatePlayerMouse ()
+    {
+        float rotation = Input.GetAxis("Mouse X") * 7 * Time.deltaTime;
+        //Debug.Log(rotation);
+        transform.Rotate(0, rotation, 0);
+
+    }
+
     private void Jump() {
         if (Input.GetKeyDown("space") && !playerVariables.blocking)
         {
@@ -153,7 +161,9 @@ public class playerController : MonoBehaviour
             RotatePlayer();
             Jump();
             Attack();
-            
+            RotatePlayerMouse();
+
+
             if (transform.position.y < -8)
             {
                 playerVariables.dead = true;
