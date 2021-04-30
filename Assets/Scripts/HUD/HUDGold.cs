@@ -4,13 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class HUDGold : MonoBehaviour
-{
-
+// Display gold on screen
+public class HUDGold : MonoBehaviour {
     public TMP_Text text;
 
-    public void SetGold (int gold)
-    {
+    public void SetGold (int gold) {
         text.text = gold.ToString(); 
     }
     

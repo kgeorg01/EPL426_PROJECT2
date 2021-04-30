@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// The information about the enemy
 public class enemyVariables : MonoBehaviour
 {
     public int health;
@@ -12,28 +13,23 @@ public class enemyVariables : MonoBehaviour
     public HUDHealthBar healthBar;
     // Start is called before the first frame update
     
-    void Start()
-    {
-        //if (maxHP == null) maxHP = health;
-        //healthBar.SetMaxHealth(maxHP);
-    }
-    void death()
-    {
+   // Destroy dead enemies
+    void death() {
         Destroy(gameObject);
-
     }
-    public void TakeDamage(int damage)
-    {
-        //rest of the damage affects health
+
+
+    public void TakeDamage(int damage) {
+        // Takes damage and updates his healthbar
         health -= damage;
         if (health < 0) health = 0;
         healthBar.SetHealth(health);
         
-        if (health == 0)
-        {
+        // Triggers death animation and destroys object after 10 seconds
+        if (health == 0) {
             dead = true;
             Invoke("death", 10);
-            
         }
     }
+
 }

@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class HUDPotion : MonoBehaviour
-{
+// Display amount of potions on screen
+public class HUDPotion : MonoBehaviour {
     public TMP_Text text;
 
-    public void SetPotion(int potion)
-    {
+    public void SetPotion(int potion) {
         text.text = potion.ToString();
     }
-
-
 }

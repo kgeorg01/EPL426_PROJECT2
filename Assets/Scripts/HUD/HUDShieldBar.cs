@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// The shield bar displayed on our screen, similar to health bar
 public class HUDShieldBar : MonoBehaviour
 {
     public Slider slider;

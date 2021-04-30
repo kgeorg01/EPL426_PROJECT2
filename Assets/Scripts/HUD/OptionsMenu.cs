@@ -7,9 +7,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
+// Option menu of our game
 public class OptionsMenu : MonoBehaviour
 {
-
     public AudioMixer audioMixer;
     public AudioMixer musicMixer;
     public TMP_Dropdown resolutionDropdown;
@@ -22,52 +22,43 @@ public class OptionsMenu : MonoBehaviour
 
     Resolution[] res;
 
-    void Start()
-    {
-
-        // callerUI.SetActive(false);
-        //optionMenuUI.SetActive(false);
-        if (res == null)
-        {
-          
-
+    void Start(){
+        // Define resolution
+        if (res == null){
             res = Screen.resolutions;
             resolutionDropdown.ClearOptions();
 
             List<string> opts = new List<string>();
             int currentResIndx = 0;
-            for (int i = 0; i < res.Length; i++)
-            {
+            for (int i = 0; i < res.Length; i++) {
                 string opt = res[i].width + " x " + res[i].height;
                 opts.Add(opt);
-
-                if (res[i].width == Screen.width && res[i].height == Screen.height)
-                {
+                if (res[i].width == Screen.width && res[i].height == Screen.height) {
                     currentResIndx = i;
                 }
-
             }
-
             resolutionDropdown.AddOptions(opts);
             resolutionDropdown.value = currentResIndx;
             resolutionDropdown.RefreshShownValue();
         }
     }
 
- 
-
+    // Set the volume of our game
     public void setVolume (float volume)
     {
         PlayerPrefs.SetFloat("volume", volume);
         volumeSlider.value = volume;
         audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
     }
-    public void setMusic(float volume)
-    {
+
+    // Set the volume of our background music
+    public void setMusic(float volume) {
         PlayerPrefs.SetFloat("music", volume);
         musicSlider.value = volume;
         musicMixer.SetFloat("music", Mathf.Log10(volume) * 20);
     }
+
+    // Set the graphics of the game
     public void setQuality (int qualityIndex)
     {
         PlayerPrefs.SetInt("quality", qualityIndex);
@@ -76,16 +67,16 @@ public class OptionsMenu : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
-    public void setFulllscreen (bool isFullscreen)
-    {
+    // Option to go on fullscreen
+    public void setFulllscreen (bool isFullscreen)  {
         if (isFullscreen) PlayerPrefs.SetInt("fullscreen", 1);
         else PlayerPrefs.SetInt("fullscreen", 0);
         fullscreenToggle.isOn = isFullscreen;
         Screen.fullScreen = isFullscreen;
     }
 
-    public void setResolution (int resIndx)
-    {
+    // Set the resolution of our game
+    public void setResolution (int resIndx) {
         PlayerPrefs.SetInt("resolution", resIndx);
         if (res == null) Start();
         Resolution resolution = res[resIndx];
@@ -94,11 +85,9 @@ public class OptionsMenu : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
-    public void Back ()
-    {
+    // Go back to the previous screen
+    public void Back () {
         optionMenuUI.SetActive(false);
         callerUI.SetActive(true);
-        
     }
-
 }
