@@ -9,11 +9,22 @@ public class opendoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!opened && transform.childCount == 0)
+        if (!opened && ChildCountActive(this.transform) == 0)
         {
             opened = true;
             gate.Play("Open");
         }
+    }
+
+    public int ChildCountActive(Transform t)
+    {
+        int k = 0;
+        foreach (Transform c in t)
+        {
+            if (c.gameObject.activeSelf)
+                k++;
+        }
+        return k;
     }
 
 }
