@@ -13,7 +13,7 @@ public class LoadMenu : MonoBehaviour {
     public TMP_Text text2;
     public TMP_Text text3;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         // Present the save slots we have
@@ -30,7 +30,7 @@ public class LoadMenu : MonoBehaviour {
     }
 
 
-
+    // Update the time on saved slots every time the player open the load menu
     public void OnEnable() {
         for (int i = 1; i < 4; i++) {
             string saveName = "player" + i + ".save";

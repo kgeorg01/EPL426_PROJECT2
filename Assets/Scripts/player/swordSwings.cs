@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Choose a random swing audio
+ */
 public class swordSwings : MonoBehaviour
 {
     public AudioSource swing1;

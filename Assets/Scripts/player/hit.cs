@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * The attack animations and attack damage on enemies
+ */
 public class hit : MonoBehaviour
 {
     private string lastanim = "";

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/***
+ * Grunt Sounds
+ */
 public class Grunts : MonoBehaviour
 {
     public AudioSource grunt1;

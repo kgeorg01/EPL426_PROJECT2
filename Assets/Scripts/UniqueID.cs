@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// Placeholder for UniqueIdDrawer script
+// Creates unique IDs (GUID) for objects 
 public class UniqueIdentifierAttribute : PropertyAttribute { }
 
 public class UniqueID : MonoBehaviour

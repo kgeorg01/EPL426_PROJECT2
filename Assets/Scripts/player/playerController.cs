@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ *  Player's movement, attack , damage from enviroment , collecting items.
+ * 
+ */
 public class playerController : MonoBehaviour
 {
     
@@ -68,7 +72,6 @@ public class playerController : MonoBehaviour
     private void RotatePlayerMouse ()
     {
         float rotation = Input.GetAxis("Mouse X") * 7 * Time.deltaTime;
-        //Debug.Log(rotation);
         transform.Rotate(0, rotation, 0);
 
     }

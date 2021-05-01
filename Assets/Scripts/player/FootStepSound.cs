@@ -16,7 +16,6 @@ public class FootStepSound : MonoBehaviour
 
     public playerVariables playervar;
 
-    
 
     private void OnTriggerEnter(Collider col)
     {
@@ -61,13 +60,14 @@ public class FootStepSound : MonoBehaviour
         textureName = textureName.ToLower();
         textureName = textureName.Replace(" ", "");
         
-        if (textureName == "moss" || textureName == "terraingrass" || textureName == "rockygrass") AudioSource.PlayClipAtPoint(grassWalk.clip, this.gameObject.transform.position);
-        else if (textureName == "rock" || textureName == "scree") AudioSource.PlayClipAtPoint(rockWalk.clip, this.gameObject.transform.position);
+        if (textureName == "moss" || textureName == "terraingrass" || textureName == "rockygrass" || textureName == "rockygrass2") AudioSource.PlayClipAtPoint(grassWalk.clip, this.gameObject.transform.position);
+        else if (textureName == "rock" || textureName == "scree" || textureName == "rockypath") AudioSource.PlayClipAtPoint(rockWalk.clip, this.gameObject.transform.position);
         else if (textureName == "mud") AudioSource.PlayClipAtPoint(mudWalk.clip, this.gameObject.transform.position);
         else if (textureName == "dirt" || textureName == "terraindirt") AudioSource.PlayClipAtPoint(dirtWalk.clip, this.gameObject.transform.position);
         else if (textureName == "gravel") AudioSource.PlayClipAtPoint(gravelWalk.clip, this.gameObject.transform.position);
         else AudioSource.PlayClipAtPoint(defaultWalk.clip, this.gameObject.transform.position);
 
+       /// Debug.Log(textureName);
     }
 
     float[] GetTerrainTextureMix(Vector3 worldPos, TerrainData terrainData, Vector3 terrainPos)

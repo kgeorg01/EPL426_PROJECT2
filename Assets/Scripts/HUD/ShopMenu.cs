@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * 
+ * The logic of the shop menu.
+ * The user can spend gold to buy items/power ups.
+ * 
+ * 
+ */
 public class ShopMenu : MonoBehaviour
 {
     public playerVariables playerVar;
 
+    //Buy 1 health potion
     public void BuyHealthPotion ()
     {
         if (playerVar.GetGold() >= 10)
@@ -14,6 +22,8 @@ public class ShopMenu : MonoBehaviour
         }
         
     }
+
+    // Increase max health by 10
     public void BuyMaxHealth()
     {
         if (playerVar.GetGold() >= 15)
@@ -21,9 +31,10 @@ public class ShopMenu : MonoBehaviour
             playerVar.SubtractGold(15);
             playerVar.AddMaxHealth(10);
         }
-      //  Debug.Log(playerVar.maxHealth);
+  
     }
 
+    // Increase max shield by 10
     public void BuyMaxArmour()
     {
         if (playerVar.GetGold() >= 15)
@@ -31,9 +42,9 @@ public class ShopMenu : MonoBehaviour
             playerVar.SubtractGold(15);
             playerVar.AddMaxArmour(10);
         }
-       // Debug.Log(playerVar.maxArmour);
+      
     }
-
+    // Increase damage by 20%
     public void BuyDamage()
     {
         if (playerVar.GetGold() >= 25)
@@ -41,18 +52,19 @@ public class ShopMenu : MonoBehaviour
             playerVar.SubtractGold(25);
             playerVar.IncreasePercDamage(0.2F); //20% increase
         }
-       // Debug.Log(playerVar.attackDamage);
+      
     }
 
+    //Buy 1 more potion slots.
     public void BuyMaxPotion()
     {
         if (playerVar.GetGold() >= 30)
             
         {
             playerVar.SubtractGold(30);
-            playerVar.AddMaxPotion(1); //20% increase
+            playerVar.AddMaxPotion(1); 
         }
-        //Debug.Log(playerVar.maxPotions);
+        
     }
 
 

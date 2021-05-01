@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+/**
+ * Object to save player's data
+ * 
+ */
 [System.Serializable]
 public class PlayerData
 {

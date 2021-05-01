@@ -274,8 +274,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 75
+  maxHP: 0
   attacking: 0
   dead: 0
+  fistdamage: 1
   healthBar: {fileID: 694722128187323004}
 --- !u!114 &1848868068
 MonoBehaviour:
@@ -297,6 +299,19 @@ MonoBehaviour:
   healthbar: {fileID: 8855688649599511243}
   arrow: {fileID: 5203811881144288120, guid: 2b934fc161d98b24aa223a44691c47c5, type: 3}
   enemyVar: {fileID: 1848868067}
+--- !u!65 &1788504117044191645
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7789269041981848379}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.65, y: 2, z: 0.65}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &6978436737450853994
 PrefabInstance:
   m_ObjectHideFlags: 0

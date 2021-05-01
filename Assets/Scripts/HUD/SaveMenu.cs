@@ -32,6 +32,7 @@ public class SaveMenu : MonoBehaviour
         }
     }
 
+    // Update the time on saved slots every time the player open the save menu
     public void OnEnable()
     {
         for (int i = 1; i < 4; i++)
@@ -48,24 +49,26 @@ public class SaveMenu : MonoBehaviour
         }
     }
 
+    //Save on the first slot
     public void OnSlot1Click ()
     {
         text1.text = DateTime.Now.ToString();
         pv.SavePlayer(1);
     }
-
+    //Save on the second slot
     public void OnSlot2Click()
     {
         text2.text = DateTime.Now.ToString();
         pv.SavePlayer(2);
     }
-
+    //Save on the third slot
     public void OnSlot3Click()
     {
         text3.text = DateTime.Now.ToString();
         pv.SavePlayer(3);
     }
 
+    //back to main menu
     public void Back()
     {
         saveMenuUI.SetActive(false);

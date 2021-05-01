@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * The object to save enemy's data
+ * 
+ */
 [System.Serializable]
 public class EnemyData
 {

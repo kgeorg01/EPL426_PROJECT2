@@ -8,6 +8,10 @@ using System.Collections;
 public static class SaveSystem
 {
 
+    /**
+     * Saving the player's data (like position health , potions , gold etc)
+     * Using an object named PlayerData for to write it on the disk
+     */
     public static void SavePlayer(playerVariables player, int slot)
     {
 
@@ -27,7 +31,10 @@ public static class SaveSystem
             SaveEnemies(slot);
         }
     }
-
+   
+    /**
+     * Returning the player's saved data
+     */
     public static PlayerData LoadPlayer(int slot)
     {
 
@@ -43,8 +50,6 @@ public static class SaveSystem
 
             stream.Close();
 
-            //  Time.timeScale = 1f;
-            //SceneManager.LoadScene(pd.scenceIdx , LoadSceneMode.Single);
 
             if (slot >0)
             {
@@ -63,6 +68,10 @@ public static class SaveSystem
 
     }
 
+    /**
+     * Saving the IDs of collectibles in the scene
+     * Collectible = Potion, Ingot , Coin , Shield , Crate.
+     */
     public static void SaveCollectibles(int slot)
     {
 
@@ -150,11 +159,14 @@ public static class SaveSystem
 
 
 
-
-    public static void LoadCollectibles(int slot)
-    {
-
-
+    /**
+     *  Loading the saved collectibles.
+     *  Activating only the collectibles which were active when the game was last saved.
+     *  The rest are disabled.
+     *  
+     */
+    public static void LoadCollectibles(int slot) { 
+    
         string saveName = "collectibles" + slot + ".save";
         string path = Path.Combine(Application.persistentDataPath, saveName);
 
@@ -218,15 +230,15 @@ public static class SaveSystem
 
     }
 
+    /**
+     * Saving the players ID , position , health, max health.
+     */
     public static void SaveEnemies(int slot)
     {
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         EnemyData[] enemyData = new EnemyData[enemies.Length];
-
-
-  
 
         //THE GAME OBJECTS MUST HAVE A COMPONENT WITH THE SCRIPT "UniqueID"
 
@@ -252,7 +264,13 @@ public static class SaveSystem
 
 
 
-
+    /**
+     *  Loading the saved enemies
+     *  Activating only the enemies which were active(=alive) when the game was last saved.
+     *  The rest are disabled (= dead).
+     *  
+     *  Active enemies get their saved health , max health and position
+     */
     public static void LoadEnemies(int slot)
     {
 
@@ -270,7 +288,7 @@ public static class SaveSystem
             List<EnemyData> loadData = new List<EnemyData>(enemyDat);
 
 
-            //All the enemies in the scence
+            //All the enemies in the scene
             GameObject[] enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
             List<GameObject> enemiesList = new List<GameObject>(enemiesArray);
           

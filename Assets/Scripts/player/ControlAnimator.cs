@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+/***
+ * Player's animation controller
+ * 
+ */
 public class ControlAnimator : MonoBehaviour
 {
     private Animator anim;
