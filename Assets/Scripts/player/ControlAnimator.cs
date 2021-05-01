@@ -21,9 +21,9 @@ public class ControlAnimator : MonoBehaviour
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-
     }
 
+    // checks if player is attacking if an attacking animation of his is playing
     private void checkAttack()
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Heavy1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Heavy2") ||
@@ -54,8 +54,10 @@ public class ControlAnimator : MonoBehaviour
         anim.SetBool("block", playerVariables.blocking);
         anim.SetFloat("vertical", playerVariables.mV);
         anim.SetFloat("horizontal", playerVariables.mH);
+        // check how the player dead if true
         if (playerVariables.dead)
         {
+            // normal death
             if (!playerVariables.falling)
             {
                 anim.Play("Death");
@@ -67,6 +69,7 @@ public class ControlAnimator : MonoBehaviour
             }
             else
             {
+            // death from fall
                 anim.Play("Falling");
                 if (!over)
                 {
@@ -75,6 +78,7 @@ public class ControlAnimator : MonoBehaviour
                     death.Play();
                 }
             }
+            // Game over screen display
             counter += Time.deltaTime;
             GameOver.alpha = Mathf.Lerp(0, 1, counter / Duration);
             if (counter > 7f) SceneManager.LoadScene(SceneManager.GetActiveScene().name);

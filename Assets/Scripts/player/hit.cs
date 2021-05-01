@@ -12,13 +12,17 @@ public class hit : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        // if sword game in contact with enemy he will take dmg
         if (other.tag.Equals("Enemy") && playerVariables.attacking) {
+            // chech if we are still in the current animation
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName(lastanim))
             {
+                // Heavy attack dmg
                 if (playerVariables.attackingheavy)
                 {
                     other.gameObject.GetComponent<enemyVariables>().TakeDamage(50);
                 }
+                // Light attack dmg
                 else if (playerVariables.attackinglight)
                 {
                     other.gameObject.GetComponent<enemyVariables>().TakeDamage(25);

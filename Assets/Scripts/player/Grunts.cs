@@ -11,6 +11,7 @@ public class Grunts : MonoBehaviour
     public AudioSource grunt2;
     public AudioSource grunt3;
 
+    // when attacking play one of the three grunts chosen randomly
     void grunts()
     {
         int i = Random.Range(0, 2);
