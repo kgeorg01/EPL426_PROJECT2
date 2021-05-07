@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class hit : MonoBehaviour
 {
     private string lastanim = "";
     public Animator anim;
+	public playerVariables playervar;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -20,12 +22,13 @@ public class hit : MonoBehaviour
                 // Heavy attack dmg
                 if (playerVariables.attackingheavy)
                 {
-                    other.gameObject.GetComponent<enemyVariables>().TakeDamage(50);
+					
+                    other.gameObject.GetComponent<enemyVariables>().TakeDamage((int)Math.Round(playervar.attackDamage*2));
                 }
                 // Light attack dmg
                 else if (playerVariables.attackinglight)
                 {
-                    other.gameObject.GetComponent<enemyVariables>().TakeDamage(25);
+                    other.gameObject.GetComponent<enemyVariables>().TakeDamage((int)Math.Round(playervar.attackDamage));
                 }
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Light1")) lastanim = "Light1";
                 else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Light2")) lastanim = "Light2";
