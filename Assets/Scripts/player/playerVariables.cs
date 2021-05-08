@@ -68,7 +68,7 @@ public class playerVariables : MonoBehaviour
         maxPotions = 3;
         gold = 0;
         potions = 0;
-        attackDamage = 10;
+        attackDamage = 20;
 
         health = maxHealth;
         armour = maxArmour;

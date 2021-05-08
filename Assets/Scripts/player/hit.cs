@@ -19,16 +19,19 @@ public class hit : MonoBehaviour
             // chech if we are still in the current animation
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName(lastanim))
             {
+                int damage = (int)Math.Round(playervar.attackDamage);
                 // Heavy attack dmg
                 if (playerVariables.attackingheavy)
                 {
 					
-                    other.gameObject.GetComponent<enemyVariables>().TakeDamage((int)Math.Round(playervar.attackDamage*2));
+                    other.gameObject.GetComponent<enemyVariables>().TakeDamage(damage*2);
+                   
                 }
                 // Light attack dmg
                 else if (playerVariables.attackinglight)
                 {
-                    other.gameObject.GetComponent<enemyVariables>().TakeDamage((int)Math.Round(playervar.attackDamage));
+                    other.gameObject.GetComponent<enemyVariables>().TakeDamage(damage);
+                    
                 }
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Light1")) lastanim = "Light1";
                 else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Light2")) lastanim = "Light2";
